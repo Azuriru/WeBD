@@ -1,0 +1,24 @@
+/* Scrollbars */
+body::-webkit-scrollbar {
+    display: none;
+}
+
+#scrollwrap {
+    overflow-y: scroll;
+    height: 100vh;
+}
+
+#scrollwrap::-webkit-scrollbar {
+	width: 14px;
+}
+
+#scrollwrap::-webkit-scrollbar-thumb {
+	background-color: rgba(0, 0, 0, 0.5);
+	border-radius: 10px;
+	border: 3px solid transparent;
+	background-clip: padding-box;
+}
+
+#scrollwrap::-webkit-scrollbar-track {
+	background: transparent;
+}

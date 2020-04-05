@@ -1,0 +1,125 @@
+#app-mount {
+    width: 100%;
+    height: 100%;
+    /* background: rgba(255, 255, 255, .2); */
+}
+
+.bd-guilds {
+    width: 72px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: center;
+}
+
+.bd-guilds .bd-listItem {
+    margin: 0 0 8px;
+}
+
+.bd-guilds .bd-listItem:first-of-type {
+    margin-top: 8px;
+}
+
+.bd-guilds .bd-listItem {
+    margin: 0 0 8px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(to right bottom, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .2s;
+    cursor: pointer;
+}
+
+.bd-guilds .bd-listItem::before {
+	content: '';
+	position: absolute;
+	width: 44px;
+	height: 44px;
+	border-radius: 50%;
+	background: white;
+    z-index: 0;
+    transition: .2s;
+}
+
+.bd-guilds .bd-listItem:hover,
+.bd-guilds .bd-listItem:hover::before {
+    border-radius: 35%;
+}
+
+.bd-guilds .bd-guild {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to right bottom, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: bold;
+    font-size: 14px;
+    position: relative;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+
+* {
+    box-sizing: border-box;
+    outline: none;
+}
+
+body {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    background: #380831;
+    color: white;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+body::before {
+    content: '';
+    background-image: url('https://cdn.discordapp.com/attachments/595506142126538753/602478618001801216/Hopal.png');
+    background-color: #380831;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+    filter: brightness(.7) contrast(1.1) blur();
+    z-index: -1;
+}
+
+/* Scrollbars */
+body::-webkit-scrollbar {
+    display: none;
+}
+
+#scrollwrap {
+    overflow-y: scroll;
+    height: 100vh;
+}
+
+#scrollwrap::-webkit-scrollbar {
+	width: 14px;
+}
+
+#scrollwrap::-webkit-scrollbar-thumb {
+	background-color: rgba(0, 0, 0, 0.5);
+	border-radius: 10px;
+	border: 3px solid transparent;
+	background-clip: padding-box;
+}
+
+#scrollwrap::-webkit-scrollbar-track {
+	background: transparent;
+}

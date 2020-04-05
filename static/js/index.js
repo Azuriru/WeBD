@@ -6,6 +6,6 @@ const using = src => new Promise(res => {
 });
 
 (async() => {
-    await using('./js/lib/jquery.min.js');
-    await using('./js/lib/jquery-ui.js');
+    await using('./js/ui.js');
+    await using('./js/discord.js');
 }) ();
