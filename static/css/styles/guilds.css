@@ -1,21 +1,27 @@
 .bd-guilds {
     width: 72px;
-    height: 100%;
+    overflow: hidden;
     background: rgba(255, 255, 255, 0.1);
     display: flex;
     justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
 }
 
 .bd-guilds .bd-listItem {
     margin: 0 0 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .bd-guilds .bd-listItem:first-of-type {
     margin-top: 8px;
 }
 
-.bd-guilds .bd-listItem {
-    margin: 0 0 8px;
+.bd-guilds .bd-listItem .bd-guildWrapper {
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -25,9 +31,10 @@
     justify-content: center;
     transition: .2s;
     cursor: pointer;
+    position: relative;
 }
 
-.bd-guilds .bd-listItem::before {
+.bd-guilds .bd-listItem .bd-guildWrapper::before {
 	content: '';
 	position: absolute;
 	width: 44px;
@@ -38,12 +45,19 @@
     transition: .2s;
 }
 
-.bd-guilds .bd-listItem:hover,
-.bd-guilds .bd-listItem:hover::before {
+.bd-guilds .bd-listItem .bd-guildWrapper:hover,
+.bd-guilds .bd-listItem .bd-guildWrapper:hover::before {
     border-radius: 35%;
 }
 
-.bd-guilds .bd-guild {
+.bd-guilds .bd-listItem .bd-guildSeparator {
+    height: 2px;
+    width: 32px;
+    border-radius: 1px;
+    background: linear-gradient(to right bottom, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+}
+
+.bd-guilds .bd-listItem .bd-guild {
     width: 50px;
     height: 50px;
     border-radius: 50%;

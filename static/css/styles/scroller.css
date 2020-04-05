@@ -1,0 +1,7 @@
+.bd-scroller {
+    overflow-x: hidden;
+}
+
+.bd-scroller.bd-hidden::-webkit-scrollbar {
+    width: 0;
+}

@@ -1,0 +1,43 @@
+.bd-channel {
+    display: flex;
+    align-items: center;
+    border-radius: 3px;
+    margin: 4px;
+    padding: 2px 5px;
+    background: rgba(255, 255, 255, .1);
+}
+
+.bd-channel .bd-avatar {
+    width: 32px;
+    height: 32px;
+    margin-right: 6px;
+}
+
+.bd-channel .bd-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.bd-channel .bd-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.bd-channel .bd-content .bd-username {
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.bd-channel .bd-content .bd-status {
+    margin-top: -2px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.bd-status-name {
+    font-weight: bold;
+}

@@ -7,5 +7,6 @@ const using = src => new Promise(res => {
 
 (async() => {
     await using('./js/ui.js');
+    await using('./js/data.js');
     await using('./js/discord.js');
 }) ();
