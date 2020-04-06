@@ -14,11 +14,16 @@
 }
 
 .bd-channel {
+    height: 42px;
     display: flex;
     align-items: center;
     border-radius: 3px;
-    margin: 4px;
-    padding: 2px 5px;
+    margin: 2px 6px;
+    padding: 1px 8px;
+    transition: .3s;
+}
+
+.bd-channel:hover {
     background: rgba(255, 255, 255, .1);
 }
 
@@ -26,6 +31,9 @@
     width: 32px;
     height: 32px;
     margin-right: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .bd-channel .bd-img {
@@ -53,8 +61,17 @@
     line-height: 16px;
 }
 
-.bd-status-name {
+.bd-channel .bd-content .bd-status .bd-status-name {
     font-weight: bold;
+}
+
+.bd-header {
+    display: flex;
+    padding: 18px 8px 4px 14px;
+    height: 40px;
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 16px;
 }
 
 .bd-guilds {
@@ -74,6 +91,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 .bd-guilds .bd-listItem:first-of-type {
@@ -104,8 +122,8 @@
     transition: .2s;
 }
 
-.bd-guilds .bd-listItem .bd-guildWrapper:hover,
-.bd-guilds .bd-listItem .bd-guildWrapper:hover::before {
+.bd-guilds .bd-listItem:hover .bd-guildWrapper,
+.bd-guilds .bd-listItem:hover .bd-guildWrapper::before {
     border-radius: 35%;
 }
 
@@ -130,6 +148,39 @@
     font-weight: bold;
     font-size: 14px;
     position: relative;
+}
+
+.bd-guilds .bd-listItem .bd-guild.bd-img {
+    width: 44px;
+    height: 44px;
+}
+
+.bd-guilds .bd-listItem .bd-pillWrapper {
+    height: 48px;
+    width: 8px;
+    position: absolute;
+    left: 0;
+    display: flex;
+    align-items: center;
+}
+
+.bd-guilds .bd-listItem .bd-pillWrapper .bd-pill {
+    background: white;
+    width: 8px;
+    border-radius: 0 4px 4px 0;
+    margin-left: -8px;
+    transition: .3s;
+}
+
+.bd-guilds .bd-listItem:hover .bd-pillWrapper .bd-pill.bd-focused,
+.bd-guilds .bd-listItem .bd-pillWrapper .bd-pill.bd-focused {
+    height: 40px;
+    margin-left: -4px;
+}
+
+.bd-guilds .bd-listItem:hover .bd-pillWrapper .bd-pill {
+    height: 20px;
+    margin-left: -4px;
 }
 
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
@@ -193,6 +244,7 @@ body::-webkit-scrollbar {
 
 .bd-scroller {
     overflow-x: hidden;
+    width: 100%;
 }
 
 .bd-scroller.bd-hidden::-webkit-scrollbar {
@@ -204,13 +256,14 @@ body::-webkit-scrollbar {
     flex-direction: column;
     width: 240px;
     height: 100%;
-    background: rgba(255, 255, 255, .1);
+    /* background: rgba(255, 255, 255, .1); */
 }
 
 .bd-sidebar .bd-privateChannels {
     display: flex;
     flex-direction: column;
     height: 100%;
+    overflow: hidden;
 }
 
 .bd-sidebar .bd-privateChannels .bd-searchBar {

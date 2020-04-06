@@ -15,6 +15,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 .bd-guilds .bd-listItem:first-of-type {
@@ -45,8 +46,8 @@
     transition: .2s;
 }
 
-.bd-guilds .bd-listItem .bd-guildWrapper:hover,
-.bd-guilds .bd-listItem .bd-guildWrapper:hover::before {
+.bd-guilds .bd-listItem:hover .bd-guildWrapper,
+.bd-guilds .bd-listItem:hover .bd-guildWrapper::before {
     border-radius: 35%;
 }
 
@@ -71,4 +72,37 @@
     font-weight: bold;
     font-size: 14px;
     position: relative;
+}
+
+.bd-guilds .bd-listItem .bd-guild.bd-img {
+    width: 44px;
+    height: 44px;
+}
+
+.bd-guilds .bd-listItem .bd-pillWrapper {
+    height: 48px;
+    width: 8px;
+    position: absolute;
+    left: 0;
+    display: flex;
+    align-items: center;
+}
+
+.bd-guilds .bd-listItem .bd-pillWrapper .bd-pill {
+    background: white;
+    width: 8px;
+    border-radius: 0 4px 4px 0;
+    margin-left: -8px;
+    transition: .3s;
+}
+
+.bd-guilds .bd-listItem:hover .bd-pillWrapper .bd-pill.bd-focused,
+.bd-guilds .bd-listItem .bd-pillWrapper .bd-pill.bd-focused {
+    height: 40px;
+    margin-left: -4px;
+}
+
+.bd-guilds .bd-listItem:hover .bd-pillWrapper .bd-pill {
+    height: 20px;
+    margin-left: -4px;
 }
