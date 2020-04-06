@@ -37,6 +37,10 @@
                 case 'classes':
                     el.setAttribute('class', val.join(' '));
                     break;
+                case 'events':
+                    for (const key in val) {
+                        el.addEventListener(key, val[key]);
+                    }
                 case 'if':
                     break;
 

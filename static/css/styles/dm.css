@@ -6,6 +6,15 @@
     margin: 2px 6px;
     padding: 1px 8px;
     transition: .3s;
+    user-select: none;
+}
+
+/* these aren't listItems */
+/* check guilds.css lol */
+/* yeah but guilds.css isn't gonna be adding this class to the elems lmao */
+.bd-channel.bd-selected,
+.bd-channel.bd-selected:hover {
+    background: rgba(255, 255, 255, .15);
 }
 
 .bd-channel:hover {
@@ -30,11 +39,15 @@
 .bd-channel .bd-content {
     display: flex;
     flex-direction: column;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .bd-channel .bd-content .bd-username {
     font-size: 16px;
     line-height: 20px;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .bd-channel .bd-content .bd-status {

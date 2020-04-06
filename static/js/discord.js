@@ -5,11 +5,27 @@ const guildNav = build.div({
         html: guildList.map(guild => {
             return build.div({
                 class: 'bd-listItem',
+                events: {
+                    click: function(e) {
+                        const me = e.currentTarget;
+                        
+                        if (me.classList.contains('bd-focused')) return;
+
+                        const all = document.querySelectorAll('.bd-listItem.bd-focused');
+
+                        let i = all.length;
+                        while (i--) {
+                            all[i].classList.remove('bd-focused');
+                        }
+
+                        me.classList.add('bd-focused');
+                    }
+                },
                 html: [
                     build.div({
                         class: 'bd-pillWrapper',
                         html: build.div({
-                            class: guild.pill ? `${guild.pill + ' bd-pill'}` : 'bd-pill'
+                            class: 'bd-pill'
                         })
                     }), 
                     build.div({
@@ -42,61 +58,84 @@ const privateSearch = build.div({
     class: 'bd-searchBar',
     html: build.div({
         class: 'bd-searchInner',
-        html: 'Find or start a conversation'
+        html: 'Find or start a conversation' 
     })
 });
 
+const buildDMHeader = user => {
+    return build.div({
+        class: 'bd-header',
+        html: build.div({
+            class: 'bd-headerText',
+            html: user.header
+        })
+    });
+}
+
+const buildDMUser = user => {
+    return build.div({
+        class: 'bd-channel',
+        events: {
+            click: function(e) {
+                const me = e.currentTarget;
+                        
+                if (me.classList.contains('bd-selected')) return;
+
+                const all = document.querySelectorAll('.bd-channel.bd-selected');
+
+                let i = all.length;
+                while (i--) {
+                    all[i].classList.remove('bd-selected');
+                }
+
+                me.classList.add('bd-selected');
+            }
+        },
+        html: [
+            build.div({
+                class: 'bd-avatar',
+                html: user.icon.indexOf('svg') > -1
+                    ? user.icon
+                    : build.img({
+                        class: 'bd-img',
+                        src: user.icon
+                            ? `./img/avatars/${user.icon}`
+                            : `./img/avatars/placeholder.png`,
+                    })
+            }),
+            build.div({
+                class: 'bd-content',
+                html: [
+                    build.div({
+                        class: 'bd-username',
+                        html: user.name
+                    }),
+                    build.div({
+                        class: 'bd-status',
+                        if: user.status,
+                        html: user.status && build.span({
+                            class: 'bd-status-text',
+                            html: [
+                                build.text(`${user.status.type} `),
+                                build.span({
+                                    class: 'bd-status-name',
+                                    html: user.status.name
+                                })
+                            ]
+                        })
+                    })
+                ]
+            })
+        ]
+    });
+}
+
 const privateList = build.div({
-    class: 'bd-scroller bd-hidden',
+    class: 'bd-scroller bd-thinner',
     html: dmList.map(user => {
         return user.header 
-        ? build.div({
-            class: 'bd-header',
-            html: build.div({
-                class: 'bd-headerText',
-                html: user.header
-            })
-        })
-        : build.div({
-            class: 'bd-channel',
-            html: [
-                build.div({
-                    class: 'bd-avatar',
-                    html: user.icon.indexOf('svg') > -1
-                        ? user.icon
-                        : build.img({
-                            class: 'bd-img',
-                            src: user.icon
-                                ? `./img/avatars/${user.icon}`
-                                : `./img/avatars/placeholder.png`,
-                            // src: user.icon ? `${'./img/users' + user.icon}` : './img/users/placeholder.png'
-                        })
-                }),
-                build.div({
-                    class: 'bd-content',
-                    html: [
-                        build.div({
-                            class: 'bd-username',
-                            html: user.name
-                        }),
-                        build.div({
-                            class: 'bd-status',
-                            if: user.status,
-                            html: user.status && build.span({
-                                class: 'bd-status-text',
-                                html: [
-                                    build.text(`${user.status.type} `),
-                                    build.span({
-                                        class: 'bd-status-name',
-                                        html: user.status.name
-                                    })
-                                ]
-                            })
-                        })
-                    ]
-                })
-            ]
-        });
+            ? buildDMHeader(user)
+            : buildDMUser(user)
     })
 });
 
@@ -105,8 +144,48 @@ const privateChannels = build.div({
     html: [privateSearch, privateList]
 });
 
-const voiceBox = build.div({
-    class: 'bd-panel'
+const userSettingsGroup = userboxSettings.map(button => {
+    return build.div({
+        class: 'bd-button',
+        html: build.div({
+            class: 'bd-icon',
+            html: button.icon
+        }),
+        'data-name': button.name
+    });
+})
+
+const userBox = build.div({
+    class: 'bd-panel',
+    html: [
+        build.div({
+            class: 'bd-avatarWrapper',
+            html: build.div({
+                class: 'bd-avatar',
+                html: build.img({
+                    class: 'bd-img',
+                    src: 'https://cdn.discordapp.com/attachments/565867288167841792/696760861192093696/avatar.png'
+                })
+            })
+        }),
+        build.div({
+            class: 'bd-nameTag',
+            html: [
+                build.div({
+                    class: 'bd-username',
+                    html: 'Hellbent'
+                }),
+                build.div({
+                    class: 'bd-subtext',
+                    html: 'I love you.'
+                })
+            ]
+        }),
+        build.div({
+            class: 'bd-userSettingsGroup',
+            html: userSettingsGroup
+        })
+    ]
 });
 
 const base = build.div({
@@ -114,7 +193,7 @@ const base = build.div({
     html: [
         build.div({
             class: 'bd-sidebar',
-            html: [privateChannels, voiceBox]
+            html: [privateChannels, userBox]
         }),
         build.div({
             class: 'bd-chat',

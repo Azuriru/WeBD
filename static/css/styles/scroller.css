@@ -3,6 +3,25 @@
     width: 100%;
 }
 
+.bd-scroller.bd-thinner::-webkit-scrollbar {
+	width: 8px;
+}
+
+.bd-scroller::-webkit-scrollbar {
+	width: 14px;
+}
+
+.bd-scroller::-webkit-scrollbar-thumb {
+	background-color: rgba(255, 255, 255, 0.5);
+	border-radius: 10px;
+	border: 3px solid transparent;
+	background-clip: padding-box;
+}
+
+.bd-scroller::-webkit-scrollbar-track {
+	background: transparent;
+}
+
 .bd-scroller.bd-hidden::-webkit-scrollbar {
     width: 0;
 }

@@ -5,4 +5,5 @@
     left: 72px;
     right: 0;
     bottom: 0;
+    display: flex;
 }

@@ -11,6 +11,27 @@
     left: 72px;
     right: 0;
     bottom: 0;
+    display: flex;
+}
+
+.bd-chat {
+    height: 100%;
+    width: 100%;
+    background: rgba(255, 255, 255, .2);
+    display: flex;
+    flex-direction: column;
+}
+
+.bd-chat .bd-title {
+    width: 100%;
+    height: 48px;
+    background: rgba(0, 0, 0, .2);
+}
+
+.bd-chat .bd-content {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .3);
 }
 
 .bd-channel {
@@ -21,6 +42,15 @@
     margin: 2px 6px;
     padding: 1px 8px;
     transition: .3s;
+    user-select: none;
+}
+
+/* these aren't listItems */
+/* check guilds.css lol */
+/* yeah but guilds.css isn't gonna be adding this class to the elems lmao */
+.bd-channel.bd-selected,
+.bd-channel.bd-selected:hover {
+    background: rgba(255, 255, 255, .15);
 }
 
 .bd-channel:hover {
@@ -45,11 +75,15 @@
 .bd-channel .bd-content {
     display: flex;
     flex-direction: column;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .bd-channel .bd-content .bd-username {
     font-size: 16px;
     line-height: 20px;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .bd-channel .bd-content .bd-status {
@@ -122,8 +156,12 @@
     transition: .2s;
 }
 
+.bd-guilds .bd-listItem.bd-focused .bd-guildWrapper,
+.bd-guilds .bd-listItem.bd-focused .bd-guildWrapper::before,
+.bd-guilds .bd-listItem.bd-focused .bd-guildWrapper .bd-guild,
 .bd-guilds .bd-listItem:hover .bd-guildWrapper,
-.bd-guilds .bd-listItem:hover .bd-guildWrapper::before {
+.bd-guilds .bd-listItem:hover .bd-guildWrapper::before,
+.bd-guilds .bd-listItem:hover .bd-guildWrapper .bd-guild {
     border-radius: 35%;
 }
 
@@ -134,7 +172,7 @@
     background: linear-gradient(to right bottom, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
 }
 
-.bd-guilds .bd-listItem .bd-guild {
+.bd-guilds .bd-listItem .bd-guildWrapper .bd-guild {
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -148,9 +186,10 @@
     font-weight: bold;
     font-size: 14px;
     position: relative;
+    transition: .2s
 }
 
-.bd-guilds .bd-listItem .bd-guild.bd-img {
+.bd-guilds .bd-listItem .bd-guildWrapper .bd-guild.bd-img {
     width: 44px;
     height: 44px;
 }
@@ -172,9 +211,14 @@
     transition: .3s;
 }
 
-.bd-guilds .bd-listItem:hover .bd-pillWrapper .bd-pill.bd-focused,
-.bd-guilds .bd-listItem .bd-pillWrapper .bd-pill.bd-focused {
+.bd-guilds .bd-listItem.bd-focused .bd-pillWrapper .bd-pill,
+.bd-guilds .bd-listItem.bd-focused:hover .bd-pillWrapper .bd-pill {
     height: 40px;
+    margin-left: -4px;
+}
+
+.bd-guilds .bd-listItem.bd-unread .bd-pillWrapper .bd-pill {
+    height: 8px;
     margin-left: -4px;
 }
 
@@ -247,6 +291,25 @@ body::-webkit-scrollbar {
     width: 100%;
 }
 
+.bd-scroller.bd-thinner::-webkit-scrollbar {
+	width: 8px;
+}
+
+.bd-scroller::-webkit-scrollbar {
+	width: 14px;
+}
+
+.bd-scroller::-webkit-scrollbar-thumb {
+	background-color: rgba(255, 255, 255, 0.5);
+	border-radius: 10px;
+	border: 3px solid transparent;
+	background-clip: padding-box;
+}
+
+.bd-scroller::-webkit-scrollbar-track {
+	background: transparent;
+}
+
 .bd-scroller.bd-hidden::-webkit-scrollbar {
     width: 0;
 }
@@ -290,7 +353,7 @@ body::-webkit-scrollbar {
     padding-left: 5px;
 }
 
-.bd-sidebar .bd-privateChannels .bd-scroller.bd-hidden {
+.bd-sidebar .bd-privateChannels .bd-scroller {
     background: rgba(255, 255, 255, .05);
     height: 100%;
 }
@@ -298,4 +361,61 @@ body::-webkit-scrollbar {
 .bd-sidebar .bd-panel {
     height: 52px;
     background: rgba(255, 255, 255, .1);
+    display: flex;
+    align-items: center;
+}
+
+.bd-sidebar .bd-panel .bd-userSettingsGroup {
+    display: flex;
+    width: fit-content;
+}
+
+.bd-sidebar .bd-panel .bd-button {
+    height: 32px;
+    width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    /* background: rgba(255, 255, 255, .1); */
+}
+
+.bd-sidebar .bd-panel .bd-button .bd-icon {
+    line-height: 0;
+}
+
+.bd-sidebar .bd-panel .bd-avatarWrapper {
+    margin-right: 8px;
+}
+
+.bd-sidebar .bd-panel .bd-avatarWrapper .bd-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.bd-sidebar .bd-panel .bd-avatarWrapper .bd-avatar .bd-img {
+    width: 100%;
+    height: 100%;
+}
+
+.bd-sidebar .bd-panel .bd-nameTag {
+    margin-right: 4px;
+    flex-grow: 1;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.bd-sidebar .bd-panel .bd-nameTag .bd-username {
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 18px;
+}
+
+.bd-sidebar .bd-panel .bd-nameTag .bd-subtext {
+    font-size: 12px;
+    line-height: 16px;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }

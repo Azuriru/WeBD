@@ -1,8 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 const express = require('express');
-const minify = require('express-minify');
-const compression = require('compression');
 const app = express();
 
 app
@@ -12,6 +10,7 @@ app
 
 app.get('/:index', (req, res, next) => {
     const file = path.join(__dirname, 'static', req.params.team + '.html');
+    
     fs.exists(file, exists => {
         if (exists) {
             res.charset = 'utf8';
