@@ -1,0 +1,10 @@
+.bd-base .bd-chat .bd-content .bd-membersWrapper {
+    width: 240px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    flex-shrink: 0;
+}
+
+.bd-base .bd-chat .bd-content.bd-dm .bd-membersWrapper {
+    display: none;
+}

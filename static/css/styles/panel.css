@@ -97,6 +97,14 @@
     top: -16px;
 }
 
+.bd-sidebar .bd-panel .bd-nameTag:hover .bd-subtextWrapper.bd-noStatus .bd-subtext {
+    top: 0;
+}
+
 .bd-sidebar .bd-panel .bd-nameTag .bd-subtextWrapper .bd-subtext .bd-discrim {
     position: absolute;
+}
+
+.bd-sidebar .bd-panel .bd-nameTag .bd-subtextWrapper.bd-noStatus .bd-subtext .bd-discrim {
+    position: relative;
 }

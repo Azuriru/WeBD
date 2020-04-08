@@ -23,7 +23,116 @@
     overflow: hidden;
 }
 
-.bd-channel {
+.bd-content .bd-chatContent {
+    width: 100%;
+    height: 100%;
+    /* background: rgba(255, 255, 255, .1); */
+    display: flex;
+    flex-direction: column;
+}
+
+.bd-content .bd-chatContent .bd-messagesWrapper {
+    height: 100%;
+    width: 100%;
+    /* background: rgba(255, 255, 255, 0.1); */
+    contain: size;
+}
+
+.bd-content .bd-chatContent .bd-messagesWrapper .bd-scroller {
+    height: 100%;
+}
+
+.bd-content .bd-chatContent .bd-messagesWrapper .bd-message {
+    margin-top: 1.0625rem;
+    padding: .125rem 48px .125rem 72px;
+    position: relative;
+}
+
+.bd-content .bd-chatContent .bd-messagesWrapper .bd-message .bd-header .bd-img {
+    position: absolute;
+    left: 16px;
+    top: 4px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.bd-content .bd-chatContent .bd-messagesWrapper .bd-message .bd-header .bd-username {
+    font-size: 1rem;
+    line-height: 1.375rem;
+}
+
+.bd-content .bd-chatContent .bd-messagesWrapper .bd-message .bd-messageContent {
+    font-size: 1rem;
+    line-height: 1.375rem;
+}
+
+.bd-content .bd-chatContent .bd-channelTextArea {
+    padding: 12px 16px 24px;
+    display: flex;
+    /* background: rgba(255, 255, 255, .1); */
+    position: relative;
+}
+
+.bd-content .bd-chatContent .bd-channelTextArea:before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0;
+    height: 0;
+    width: -webkit-fill-available;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    box-sizing: border-box;
+    margin: 0 16px;
+}
+
+.bd-content .bd-chatContent .bd-channelTextArea .bd-inner {
+    width: 100%;
+    height: 44px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, .1);
+}
+
+.bd-content .bd-chatContent .bd-channelTextArea .bd-textarea {
+    background-color: transparent;
+    resize: none;
+    border: none;
+    border-radius: 8px;
+    -webkit-appearance: none;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.375rem;
+    width: 100%;
+    height: 44px;
+    padding: 11px 10px;
+    color: white;
+}
+
+.bd-send {
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    border-left: 1px solid rgba(255, 255, 255, .1);
+}
+
+.bd-send .bd-icon {
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    clip-path: polygon(50% 25%, 100% 50%, 50% 75%, 0% 100%, 30% 50%, 0% 0%);
+    transition: .5s;
+}
+
+.bd-base .bd-chat .bd-content {
+    width: 100%;
+    height: 100%;
+    /* background: rgba(255, 255, 255, .1); */
+    display: flex;
+}
+
+.bd-base .bd-sidebar .bd-privateChannels .bd-channel {
     height: 42px;
     display: flex;
     align-items: center;
@@ -37,16 +146,16 @@
 /* these aren't listItems */
 /* check guilds.css lol */
 /* yeah but guilds.css isn't gonna be adding this class to the elems lmao */
-.bd-channel.bd-selected,
-.bd-channel.bd-selected:hover {
+.bd-base .bd-sidebar .bd-privateChannels .bd-channel.bd-selected,
+.bd-base .bd-sidebar .bd-privateChannels .bd-channel.bd-selected:hover {
     background: rgba(255, 255, 255, .15);
 }
 
-.bd-channel:hover {
+.bd-base .bd-sidebar .bd-privateChannels .bd-channel:hover {
     background: rgba(255, 255, 255, .1);
 }
 
-.bd-channel .bd-avatar {
+.bd-base .bd-sidebar .bd-privateChannels .bd-channel .bd-avatar {
     width: 32px;
     height: 32px;
     margin-right: 6px;
@@ -55,27 +164,27 @@
     justify-content: center;
 }
 
-.bd-channel .bd-img {
+.bd-base .bd-sidebar .bd-privateChannels .bd-channel .bd-img {
     width: 100%;
     height: 100%;
     border-radius: 50%;
 }
 
-.bd-channel .bd-content {
+.bd-base .bd-sidebar .bd-privateChannels .bd-channel .bd-content {
     display: flex;
     flex-direction: column;
     white-space: nowrap;
     overflow: hidden;
 }
 
-.bd-channel .bd-content .bd-username {
+.bd-base .bd-sidebar .bd-privateChannels .bd-channel .bd-content .bd-username {
     font-size: 16px;
     line-height: 20px;
     text-overflow: ellipsis;
     overflow: hidden;
 }
 
-.bd-channel .bd-content .bd-status {
+.bd-base .bd-sidebar .bd-privateChannels .bd-channel .bd-content .bd-status {
     margin-top: -2px;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -84,11 +193,11 @@
     line-height: 16px;
 }
 
-.bd-channel .bd-content .bd-status .bd-status-name {
+.bd-base .bd-sidebar .bd-privateChannels .bd-channel .bd-content .bd-status .bd-status-name {
     font-weight: bold;
 }
 
-.bd-header {
+.bd-base .bd-sidebar .bd-privateChannels .bd-header {
     display: flex;
     padding: 18px 8px 4px 14px;
     height: 40px;
@@ -219,7 +328,7 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
 
 @font-face {
-    font-family: doru;
+    font-family: whitney;
     src: url('whitney.otf');
 }
 
@@ -251,9 +360,21 @@ body::before {
     right: 0;
     left: 0;
     top: 0;
-    filter: brightness(.7) contrast(1.1) blur();
+    filter: brightness(.5) contrast(1.1) blur();
     z-index: -1;
 }
+
+.bd-base .bd-chat .bd-content .bd-membersWrapper {
+    width: 240px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    flex-shrink: 0;
+}
+
+.bd-base .bd-chat .bd-content.bd-dm .bd-membersWrapper {
+    display: none;
+}
+
 
 .bd-sidebar .bd-panel {
     height: 52px;
@@ -354,8 +475,16 @@ body::before {
     top: -16px;
 }
 
+.bd-sidebar .bd-panel .bd-nameTag:hover .bd-subtextWrapper.bd-noStatus .bd-subtext {
+    top: 0;
+}
+
 .bd-sidebar .bd-panel .bd-nameTag .bd-subtextWrapper .bd-subtext .bd-discrim {
     position: absolute;
+}
+
+.bd-sidebar .bd-panel .bd-nameTag .bd-subtextWrapper.bd-noStatus .bd-subtext .bd-discrim {
+    position: relative;
 }
 
 /* Scrollbars */
@@ -476,12 +605,14 @@ body::-webkit-scrollbar {
     margin: 0 8px 0 0;
     font-size: 16px;
     line-height: 20px;
+    white-space: nowrap;
 }
 
 .bd-chat .bd-title .bd-children .bd-status {
     height: 10px;
     width: 10px;
     border-radius: 50%;
+    margin-right: 8px;
 }
 
 .bd-chat .bd-title .bd-children .bd-status.bd-online {

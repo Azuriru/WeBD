@@ -1,0 +1,101 @@
+.bd-content .bd-chatContent {
+    width: 100%;
+    height: 100%;
+    /* background: rgba(255, 255, 255, .1); */
+    display: flex;
+    flex-direction: column;
+}
+
+.bd-content .bd-chatContent .bd-messagesWrapper {
+    height: 100%;
+    width: 100%;
+    /* background: rgba(255, 255, 255, 0.1); */
+    contain: size;
+}
+
+.bd-content .bd-chatContent .bd-messagesWrapper .bd-scroller {
+    height: 100%;
+}
+
+.bd-content .bd-chatContent .bd-messagesWrapper .bd-message {
+    margin-top: 1.0625rem;
+    padding: .125rem 48px .125rem 72px;
+    position: relative;
+}
+
+.bd-content .bd-chatContent .bd-messagesWrapper .bd-message .bd-header .bd-img {
+    position: absolute;
+    left: 16px;
+    top: 4px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.bd-content .bd-chatContent .bd-messagesWrapper .bd-message .bd-header .bd-username {
+    font-size: 1rem;
+    line-height: 1.375rem;
+}
+
+.bd-content .bd-chatContent .bd-messagesWrapper .bd-message .bd-messageContent {
+    font-size: 1rem;
+    line-height: 1.375rem;
+}
+
+.bd-content .bd-chatContent .bd-channelTextArea {
+    padding: 12px 16px 24px;
+    display: flex;
+    /* background: rgba(255, 255, 255, .1); */
+    position: relative;
+}
+
+.bd-content .bd-chatContent .bd-channelTextArea:before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0;
+    height: 0;
+    width: -webkit-fill-available;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    box-sizing: border-box;
+    margin: 0 16px;
+}
+
+.bd-content .bd-chatContent .bd-channelTextArea .bd-inner {
+    width: 100%;
+    height: 44px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, .1);
+}
+
+.bd-content .bd-chatContent .bd-channelTextArea .bd-textarea {
+    background-color: transparent;
+    resize: none;
+    border: none;
+    border-radius: 8px;
+    -webkit-appearance: none;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.375rem;
+    width: 100%;
+    height: 44px;
+    padding: 11px 10px;
+    color: white;
+}
+
+.bd-send {
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    border-left: 1px solid rgba(255, 255, 255, .1);
+}
+
+.bd-send .bd-icon {
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    clip-path: polygon(50% 25%, 100% 50%, 50% 75%, 0% 100%, 30% 50%, 0% 0%);
+    transition: .5s;
+}

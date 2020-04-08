@@ -92,6 +92,10 @@ const buildDMUser = user => {
                 }
 
                 me.classList.add('bd-selected');
+
+                const header = document.querySelector('.bd-chat .bd-title .bd-children');
+                header.querySelector('.bd-username').innerHTML = me.querySelector('.bd-username').textContent;
+                // header.querySelector('.bd-status')
             }
         },
         html: [
@@ -178,7 +182,7 @@ const userBox = build.div({
                 class: 'bd-avatar',
                 html: build.img({
                     class: 'bd-img',
-                    src: 'https://cdn.discordapp.com/attachments/565867288167841792/696760861192093696/avatar.png'
+                    src: `./img/avatars/${me.avatar}`
                 })
             })
         }),
@@ -187,20 +191,20 @@ const userBox = build.div({
             html: [
                 build.div({
                     class: 'bd-username',
-                    html: 'Hellbent'
+                    html: me.name
                 }),
                 build.div({
-                    class: 'bd-subtextWrapper',
+                    class: me.status ? 'bd-subtextWrapper' : 'bd-subtextWrapper bd-noStatus',
                     html: build.div({
                         class: 'bd-subtext',
                         html: [
                             build.div({
                                 class: 'bd-status',
-                                html: 'I love you.'
+                                html: me.status
                             }),
                             build.div({
                                 class: 'bd-discrim',
-                                html: '#6969'
+                                html: `${'#' + me.discrim}`
                             })
                         ]
                     })
@@ -226,7 +230,7 @@ const children = build.div({
             html: 'Dorumin'
         }),
         build.div({
-            class: 'bd-status bd-invisible'
+            class: 'bd-status bd-online'
         }),
         build.div({
             class: 'bd-akaWrapper',
@@ -240,7 +244,7 @@ const children = build.div({
                 }),
                 build.div({
                     class: 'bd-nicknames',
-                    html: 'Naughty, Travieso, Digital Programming Overlord, Chiquito'
+                    html: 'Digital Programming Overlord'
                 })
             ]
         })
@@ -286,6 +290,65 @@ const toolbarSearch = build.div({
 
 toolbar.insertBefore(toolbarSearch, toolbar.children[4])
 
+const placeholderDM = fakeDM.map(message => {
+    return build.div({
+        class: 'bd-message',
+        html: [
+            build.div({
+                class: 'bd-header',
+                html: [
+                    build.img({
+                        class: 'bd-img',
+                        src: `./img/avatars/${message.avatar}`,
+                        width: 40,
+                        height: 40
+                    }),
+                    build.div({
+                        class: 'bd-username',
+                        html: [
+                            build.span({
+                                html: message.name
+                            })
+                        ]
+                    })
+                ]
+            }), 
+            build.div({
+                class: 'bd-messageContent',
+                html: build.div({
+                    html: message.message
+                })
+            })
+        ]
+    });
+});
+
+const content = build.div({
+    class: 'bd-chatContent',
+    html: [
+        build.div({
+            class: 'bd-messagesWrapper',
+            html: build.div({
+                class: 'bd-scroller',
+                html: placeholderDM
+            })
+        }),
+        build.div({
+            class: 'bd-channelTextArea',
+            html: build.div({
+                class: 'bd-inner',
+                html: build.textarea({
+                    class: 'bd-textarea'
+                })
+            })
+        })
+    ]
+});
+
+const membersWrap = build.div({
+    class: 'bd-membersWrapper',
+});
+
 const base = build.div({
     class: 'bd-base',
     html: [
@@ -301,10 +364,8 @@ const base = build.div({
                     html: [children, toolbar]
                 }),
                 build.div({
-                    class: 'bd-content',
-                    html: build.div({
-                        class: 'bd-channelTextArea'
-                    })
+                    class: 'bd-content bd-dm',
+                    html: [content, membersWrap]
                 })
             ]
         })

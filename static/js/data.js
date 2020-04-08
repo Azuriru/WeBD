@@ -1,3 +1,10 @@
+const me = {
+    name: 'Hellbent',
+    avatar: 'City Girl.jpeg',
+    discrim: '6969',
+    status: ''
+}
+
 const guildList = [
     {
         name: '<svg class="bd-homeIcon" aria-hidden="false" width="28" height="20" viewBox="0 0 28 20"><linearGradient id="discord" x1="0%" x2="100%" y1="0%" y2="100%"><stop offset="0%" style="stop-color:#D16BA5;stop-opacity:1"></stop><stop offset="50%" style="stop-color:#86A8E7;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#41dfff;stop-opacity:1"></stop></linearGradient><path fill="url(#discord)" d="M20.6644 20C20.6644 20 19.8014 18.9762 19.0822 18.0714C22.2226 17.1905 23.4212 15.2381 23.4212 15.2381C22.4384 15.881 21.5034 16.3334 20.6644 16.6429C19.4658 17.1429 18.3151 17.4762 17.1884 17.6667C14.887 18.0953 12.7774 17.9762 10.9795 17.6429C9.61301 17.381 8.43836 17 7.45548 16.6191C6.90411 16.4048 6.30479 16.1429 5.70548 15.8096C5.63356 15.7619 5.56164 15.7381 5.48973 15.6905C5.44178 15.6667 5.41781 15.6429 5.39384 15.6191C4.96233 15.381 4.7226 15.2143 4.7226 15.2143C4.7226 15.2143 5.87329 17.1191 8.91781 18.0238C8.19863 18.9286 7.31164 20 7.31164 20C2.0137 19.8333 0 16.381 0 16.381C0 8.7144 3.45205 2.50017 3.45205 2.50017C6.90411 -0.07123 10.1884 0.000197861 10.1884 0.000197861L10.4281 0.285909C6.11301 1.52399 4.12329 3.40493 4.12329 3.40493C4.12329 3.40493 4.65068 3.11921 5.53767 2.71446C8.10274 1.59542 10.1404 1.2859 10.9795 1.21447C11.1233 1.19066 11.2432 1.16685 11.387 1.16685C12.8493 0.976379 14.5034 0.92876 16.2295 1.11923C18.5068 1.38114 20.9521 2.0478 23.4452 3.40493C23.4452 3.40493 21.5514 1.61923 17.476 0.381146L17.8116 0.000197861C17.8116 0.000197861 21.0959 -0.07123 24.5479 2.50017C24.5479 2.50017 28 8.7144 28 16.381C28 16.381 25.9623 19.8333 20.6644 20ZM9.51712 8.88106C8.15068 8.88106 7.07192 10.0715 7.07192 11.5239C7.07192 12.9763 8.17466 14.1667 9.51712 14.1667C10.8836 14.1667 11.9623 12.9763 11.9623 11.5239C11.9863 10.0715 10.8836 8.88106 9.51712 8.88106ZM18.2671 8.88106C16.9007 8.88106 15.8219 10.0715 15.8219 11.5239C15.8219 12.9763 16.9247 14.1667 18.2671 14.1667C19.6336 14.1667 20.7123 12.9763 20.7123 11.5239C20.7123 10.0715 19.6336 8.88106 18.2671 8.88106Z"></path></svg>',
@@ -62,20 +69,24 @@ const dmList = [
         header: 'Today',
     },
     {
-        name: 'Vivi',
-        icon: 'Vivi Bat.jpg',
-    },
-    {
-        name: 'Opalmin',
+        name: 'Dorumin',
         icon: 'Opal.png',
         status: {
             type: 'Playing',
             name: 'Visual Studio Code'
-        }
+        },
+        online: 'online'
+    },
+    {
+        name: 'Vivi',
+        icon: 'Vivi Bat.jpg',
+        online: 'invisible'
+        
     },
     {
         name: 'Lovyn',
         icon: 'RyuZU.jpeg',
+        online: 'away'
     },
     {
         header: 'Yesterday',
@@ -86,11 +97,13 @@ const dmList = [
         status: {
             type: 'Listening to',
             name: 'Spotify'
-        }
+        },
+        online: 'online'
     },
     {
         name: 'Unlimited Potential',
         icon: 'Unlimited Potential.jpg',
+        online: 'online'
     },
     {
         header: 'Monday',
@@ -98,6 +111,7 @@ const dmList = [
     {
         name: 'Nasty thoughts',
         icon: 'bad thoughts.jpg',
+        online: 'away'
     },
     {
         name: 'Pandamin',
@@ -105,11 +119,13 @@ const dmList = [
         status: {
             type: 'Listening to',
             name: 'Spotify'
-        }
+        },
+        online: 'invisible'
     },
     {
         name: 'Indifferent',
         icon: 'Overburdened with indifference.jpg',
+        online: 'invisible'
     },
     {
         header: 'Sunday',
@@ -120,11 +136,13 @@ const dmList = [
         status: {
             type: 'Playing',
             name: 'Visual Studio Code'
-        }
+        },
+        online: 'online'
     },
     {
         name: 'Electric Boogaloo',
         icon: 'Star.jpg',
+        online: 'away'
     },
     {
         header: 'Saturday',
@@ -135,7 +153,8 @@ const dmList = [
         status: {
             type: 'Listening to',
             name: 'Spotify'
-        }
+        },
+        online: 'dnd'
     },
     {
         header: 'Friday',
@@ -143,6 +162,7 @@ const dmList = [
     {
         name: 'Ikashira',
         icon: 'Snow Miku.png',
+        online: 'online'
     },
     {
         header: 'October',
@@ -150,14 +170,17 @@ const dmList = [
     {
         name: 'Skeleton',
         icon: 'Skeleton.gif',
+        online: 'dnd'
     },
     {
         name: 'Wicked Kink',
         icon: 'Stardust.png',
+        online: 'online'
     },
     {
         name: 'Shipmin',
         icon: 'Cropped Panda.png',
+        online: 'invisible'
     },
 ];
 
@@ -201,4 +224,52 @@ const toolbarIconsDM = [
         name: 'Get Help',
         icon: '<svg x="0" y="0" class="bd-icon" aria-hidden="false" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.486 2 2 6.487 2 12C2 17.515 6.486 22 12 22C17.514 22 22 17.515 22 12C22 6.487 17.514 2 12 2ZM12 18.25C11.31 18.25 10.75 17.691 10.75 17C10.75 16.31 11.31 15.75 12 15.75C12.69 15.75 13.25 16.31 13.25 17C13.25 17.691 12.69 18.25 12 18.25ZM13 13.875V15H11V12H12C13.104 12 14 11.103 14 10C14 8.896 13.104 8 12 8C10.896 8 10 8.896 10 10H8C8 7.795 9.795 6 12 6C14.205 6 16 7.795 16 10C16 11.861 14.723 13.429 13 13.875Z"></path></svg>'
     }
+]
+
+const fakeDM = [
+    {
+        name: 'Dorumin',
+        avatar: 'Opal.png',
+        message: 'Hi, what\'s up, long time no see!'
+    },
+    {
+        name: me.name,
+        avatar: me.avatar,
+        message: 'Hey.'
+    },
+    {
+        name: 'Dorumin',
+        avatar: 'Opal.png',
+        message: 'I was worried about you, how are you?'
+    },
+    {
+        name: me.name,
+        avatar: me.avatar,
+        message: 'I\'m okay.'
+    },
+    {
+        name: 'Dorumin',
+        avatar: 'Opal.png',
+        message: 'That\'s great to hear'
+    },
+    {
+        name: me.name,
+        avatar: me.avatar,
+        message: 'Yeah. You?'
+    },
+    {
+        name: 'Dorumin',
+        avatar: 'Opal.png',
+        message: 'Sore.'
+    },
+    {
+        name: me.name,
+        avatar: me.avatar,
+        message: 'Why?'
+    },
+    {
+        name: 'Dorumin',
+        avatar: 'Opal.png',
+        message: 'From carrying this conversation'
+    },
 ]

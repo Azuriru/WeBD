@@ -1,4 +1,4 @@
-.bd-channel {
+.bd-base .bd-sidebar .bd-privateChannels .bd-channel {
     height: 42px;
     display: flex;
     align-items: center;
@@ -12,16 +12,16 @@
 /* these aren't listItems */
 /* check guilds.css lol */
 /* yeah but guilds.css isn't gonna be adding this class to the elems lmao */
-.bd-channel.bd-selected,
-.bd-channel.bd-selected:hover {
+.bd-base .bd-sidebar .bd-privateChannels .bd-channel.bd-selected,
+.bd-base .bd-sidebar .bd-privateChannels .bd-channel.bd-selected:hover {
     background: rgba(255, 255, 255, .15);
 }
 
-.bd-channel:hover {
+.bd-base .bd-sidebar .bd-privateChannels .bd-channel:hover {
     background: rgba(255, 255, 255, .1);
 }
 
-.bd-channel .bd-avatar {
+.bd-base .bd-sidebar .bd-privateChannels .bd-channel .bd-avatar {
     width: 32px;
     height: 32px;
     margin-right: 6px;
@@ -30,27 +30,27 @@
     justify-content: center;
 }
 
-.bd-channel .bd-img {
+.bd-base .bd-sidebar .bd-privateChannels .bd-channel .bd-img {
     width: 100%;
     height: 100%;
     border-radius: 50%;
 }
 
-.bd-channel .bd-content {
+.bd-base .bd-sidebar .bd-privateChannels .bd-channel .bd-content {
     display: flex;
     flex-direction: column;
     white-space: nowrap;
     overflow: hidden;
 }
 
-.bd-channel .bd-content .bd-username {
+.bd-base .bd-sidebar .bd-privateChannels .bd-channel .bd-content .bd-username {
     font-size: 16px;
     line-height: 20px;
     text-overflow: ellipsis;
     overflow: hidden;
 }
 
-.bd-channel .bd-content .bd-status {
+.bd-base .bd-sidebar .bd-privateChannels .bd-channel .bd-content .bd-status {
     margin-top: -2px;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -59,11 +59,11 @@
     line-height: 16px;
 }
 
-.bd-channel .bd-content .bd-status .bd-status-name {
+.bd-base .bd-sidebar .bd-privateChannels .bd-channel .bd-content .bd-status .bd-status-name {
     font-weight: bold;
 }
 
-.bd-header {
+.bd-base .bd-sidebar .bd-privateChannels .bd-header {
     display: flex;
     padding: 18px 8px 4px 14px;
     height: 40px;

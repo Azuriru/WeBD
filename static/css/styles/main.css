@@ -33,6 +33,6 @@ body::before {
     right: 0;
     left: 0;
     top: 0;
-    filter: brightness(.7) contrast(1.1) blur();
+    filter: brightness(.5) contrast(1.1) blur();
     z-index: -1;
 }
