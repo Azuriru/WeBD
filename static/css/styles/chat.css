@@ -1,19 +1,8 @@
 .bd-chat {
     height: 100%;
     width: 100%;
-    background: rgba(255, 255, 255, .2);
+    /* background: rgba(255, 255, 255, .2); */
     display: flex;
     flex-direction: column;
-}
-
-.bd-chat .bd-title {
-    width: 100%;
-    height: 48px;
-    background: rgba(0, 0, 0, .2);
-}
-
-.bd-chat .bd-content {
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, .3);
+    overflow: hidden;
 }

@@ -1,0 +1,102 @@
+.bd-sidebar .bd-panel {
+    height: 52px;
+    background: rgba(255, 255, 255, .1);
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+}
+
+.bd-sidebar .bd-panel .bd-userSettingsGroup {
+    display: flex;
+    width: fit-content;
+}
+
+.bd-sidebar .bd-panel .bd-button {
+    height: 32px;
+    width: 32px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .3s;
+    cursor: pointer;
+    /* background: rgba(255, 255, 255, .1); */
+}
+
+.bd-sidebar .bd-panel .bd-button:hover {
+    background: rgba(255, 255, 255, .1);
+}
+
+.bd-sidebar .bd-panel .bd-button .bd-icon {
+    line-height: 0;
+}
+
+.bd-sidebar .bd-panel .bd-button .bd-icon .bd-strikethrough {
+    opacity: 0;
+    fill: #f04747;
+    transition: .3s
+}
+
+.bd-sidebar .bd-panel .bd-button.bd-muted .bd-icon .bd-strikethrough {
+    opacity: 1;
+}
+
+.bd-sidebar .bd-panel .bd-avatarWrapper {
+    margin-right: 8px;
+}
+
+.bd-sidebar .bd-panel .bd-avatarWrapper .bd-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.bd-sidebar .bd-panel .bd-avatarWrapper .bd-avatar .bd-img {
+    width: 100%;
+    height: 100%;
+}
+
+.bd-sidebar .bd-panel .bd-nameTag {
+    margin-right: 4px;
+    flex-grow: 1;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.bd-sidebar .bd-panel .bd-nameTag .bd-username {
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 18px;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.bd-sidebar .bd-panel .bd-nameTag .bd-subtextWrapper {
+    color: #b1b1b1;
+    font-size: 12px;
+    line-height: 16px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    cursor: default;
+}
+
+.bd-sidebar .bd-panel .bd-nameTag .bd-subtextWrapper .bd-subtext {
+    position: relative;
+    transition: .3s;
+    top: 0;
+}
+
+.bd-sidebar .bd-panel .bd-nameTag .bd-subtextWrapper .bd-subtext .bd-status{
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.bd-sidebar .bd-panel .bd-nameTag:hover .bd-subtextWrapper .bd-subtext {
+    top: -16px;
+}
+
+.bd-sidebar .bd-panel .bd-nameTag .bd-subtextWrapper .bd-subtext .bd-discrim {
+    position: absolute;
+}
