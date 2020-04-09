@@ -11,11 +11,11 @@ const guildList = [
         class: 'bd-homeIcon bd-guild',
     },
     {
-        name: 'Laffy',
+        name: 'Little anyone foresaw from you',
         icon: '',
     },
     {
-        name: 'Lover',
+        name: 'Lest our vows exceed remedy',
         icon: '',
     },
     {
@@ -23,31 +23,31 @@ const guildList = [
         icon: 'Ashes.png',
     },
     {
-        name: 'PS',
+        name: 'Past Soujourn',
         icon: '',
     },
     {
-        name: 'GMH',
+        name: 'Game Moderator\'s Hideout',
         icon: 'Tender (Aqua).png',
     },
     {
-        name: 'DM',
+        name: 'Draco Masters',
         icon: '',
     },
     {
-        name: 'Bae',
+        name: 'Before anyone else',
         icon: '',
     },
     {
-        name: 'Byn',
+        name: 'Baby you nurtured',
         icon: '',
     },
     {
-        name: 'Gay',
+        name: 'Go away you',
         icon: '',
     },
     {
-        name: 'Hope',
+        name: 'Held onto petty envy',
         icon: '',
     }
 ];

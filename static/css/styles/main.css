@@ -16,6 +16,7 @@ body {
     right: 0;
     bottom: 0;
     margin: 0;
+    position: absolute;
     background: #380831;
     color: white;
     font-family: 'Josefin Sans', sans-serif;

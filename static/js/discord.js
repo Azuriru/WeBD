@@ -1,12 +1,12 @@
 const guildScroller = build.div({
     class: 'bd-scroller bd-hidden',
-    html: guildList.map(guild => {
+    children: guildList.map(guild => {
         return build.div({
             class: 'bd-listItem',
             events: {
                 click: function(e) {
                     const me = e.currentTarget;
-                    
+
                     if (me.classList.contains('bd-focused')) return;
 
                     const all = document.querySelectorAll('.bd-listItem.bd-focused');
@@ -19,24 +19,26 @@ const guildScroller = build.div({
                     me.classList.add('bd-focused');
                 }
             },
-            html: [
+            children: [
                 build.div({
                     class: 'bd-pillWrapper',
-                    html: build.div({
+                    child: build.div({
                         class: 'bd-pill'
                     })
-                }), 
+                }),
                 build.div({
                     class: 'bd-guildWrapper',
-                    html: !guild.icon
-                    ? build.div({
-                        class: guild.class ? guild.class : 'bd-guild',
-                        html: guild.name
-                    })
-                    : build.img({
-                        class: 'bd-img bd-guild',
-                        src: `./img/guild/${guild.icon}`
-                    })
+                    child: !guild.icon
+                        ? build.div({
+                            class: guild.class ? guild.class : 'bd-guild',
+                            html: guild.name.indexOf('svg') > -1
+                                ? guild.name
+                                : guild.name.split(' ').map(word => word.charAt(0)).join('')
+                        })
+                        : build.img({
+                            class: 'bd-img bd-guild',
+                            src: `./img/guild/${guild.icon}`
+                        })
                 })
             ]
         });
@@ -45,35 +47,52 @@ const guildScroller = build.div({
 
 const guildSeparator = build.div({
     class: 'bd-listItem',
-    html: build.div({
+    child: build.div({
         class: 'bd-guildSeparator'
     })
 });
 
 const guildNav = build.div({
     class: 'bd-guilds bd-wrapper',
-    html: guildScroller
+    child: guildScroller
 });
 
 guildScroller.insertBefore(guildSeparator, guildScroller.children[1]);
 
 const privateSearch = build.div({
     class: 'bd-searchBar',
-    html: build.div({
+    child: build.div({
         class: 'bd-searchInner',
-        html: 'Find or start a conversation' 
+        text: 'Find or start a conversation'
     })
 });
 
 const buildDMHeader = user => {
     return build.div({
         class: 'bd-header',
-        html: build.div({
+        child: build.div({
             class: 'bd-headerText',
-            html: user.header
+            text: user.header
         })
     });
 }
+
+const buildAvatar = user => {
+    const isSvg = user.icon.includes('svg');
+    const key = isSvg ? 'html' : 'child';
+
+    return build.div({
+        class: 'bd-avatar',
+        [key]: isSvg
+            ? user.icon
+            : build.img({
+                class: 'bd-img',
+                src: user.icon
+                    ? `./img/avatars/${user.icon}`
+                    : `./img/avatars/placeholder.png`,
+            })
+    });
+};
 
 const buildDMUser = user => {
     return build.div({
@@ -81,7 +100,7 @@ const buildDMUser = user => {
         events: {
             click: function(e) {
                 const me = e.currentTarget;
-                        
+
                 if (me.classList.contains('bd-selected')) return;
 
                 const all = document.querySelectorAll('.bd-channel.bd-selected');
@@ -98,31 +117,20 @@ const buildDMUser = user => {
                 // header.querySelector('.bd-status')
             }
         },
-        html: [
-            build.div({
-                class: 'bd-avatar',
-                html: user.icon.indexOf('svg') > -1
-                    ? user.icon
-                    : build.img({
-                        class: 'bd-img',
-                        src: user.icon
-                            ? `./img/avatars/${user.icon}`
-                            : `./img/avatars/placeholder.png`,
-                    })
-            }),
+        children: [
+            buildAvatar(user),
             build.div({
                 class: 'bd-content',
-                html: [
+                children: [
                     build.div({
                         class: 'bd-username',
                         html: user.name
                     }),
                     build.div({
                         class: 'bd-status',
-                        if: user.status,
-                        html: user.status && build.span({
+                        child: user.status && build.span({
                             class: 'bd-status-text',
-                            html: [
+                            children: [
                                 build.text(`${user.status.type} `),
                                 build.span({
                                     class: 'bd-status-name',
@@ -139,8 +147,8 @@ const buildDMUser = user => {
 
 const privateList = build.div({
     class: 'bd-scroller bd-thinner',
-    html: dmList.map(user => {
-        return user.header 
+    children: dmList.map(user => {
+        return user.header
             ? buildDMHeader(user)
             : buildDMUser(user)
     })
@@ -148,13 +156,13 @@ const privateList = build.div({
 
 const privateChannels = build.div({
     class: 'bd-privateChannels',
-    html: [privateSearch, privateList]
+    children: [privateSearch, privateList]
 });
 
 const userSettingsGroup = userboxSettings.map(button => {
     return build.div({
         class: 'bd-button',
-        html: build.div({
+        child: build.div({
             class: 'bd-icon',
             html: button.icon
         }),
@@ -164,7 +172,7 @@ const userSettingsGroup = userboxSettings.map(button => {
 
                 if (me.dataset['name'] == 'Settings') return;
 
-                me.classList.contains('bd-muted') 
+                me.classList.contains('bd-muted')
                     ? me.classList.remove('bd-muted')
                     : me.classList.add('bd-muted');
             }
@@ -175,12 +183,12 @@ const userSettingsGroup = userboxSettings.map(button => {
 
 const userBox = build.div({
     class: 'bd-panel',
-    html: [
+    children: [
         build.div({
             class: 'bd-avatarWrapper',
-            html: build.div({
+            child: build.div({
                 class: 'bd-avatar',
-                html: build.img({
+                child: build.img({
                     class: 'bd-img',
                     src: `./img/avatars/${me.avatar}`
                 })
@@ -188,23 +196,23 @@ const userBox = build.div({
         }),
         build.div({
             class: 'bd-nameTag',
-            html: [
+            children: [
                 build.div({
                     class: 'bd-username',
-                    html: me.name
+                    text: me.name
                 }),
                 build.div({
                     class: me.status ? 'bd-subtextWrapper' : 'bd-subtextWrapper bd-noStatus',
-                    html: build.div({
+                    child: build.div({
                         class: 'bd-subtext',
-                        html: [
+                        children: [
                             build.div({
                                 class: 'bd-status',
-                                html: me.status
+                                text: me.status
                             }),
                             build.div({
                                 class: 'bd-discrim',
-                                html: `${'#' + me.discrim}`
+                                text: `${'#' + me.discrim}`
                             })
                         ]
                     })
@@ -213,38 +221,38 @@ const userBox = build.div({
         }),
         build.div({
             class: 'bd-userSettingsGroup',
-            html: userSettingsGroup
+            children: userSettingsGroup
         })
     ]
 });
 
 const children = build.div({
     class: 'bd-children',
-    html: [
+    children: [
         build.div({
             class: 'bd-iconWrapper',
             html: '<svg x="0" y="0" class="bd-icon icon-22AiRD" aria-hidden="false" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.486 2 2 6.486 2 12C2 17.515 6.486 22 12 22C14.039 22 15.993 21.398 17.652 20.259L16.521 18.611C15.195 19.519 13.633 20 12 20C7.589 20 4 16.411 4 12C4 7.589 7.589 4 12 4C16.411 4 20 7.589 20 12V12.782C20 14.17 19.402 15 18.4 15L18.398 15.018C18.338 15.005 18.273 15 18.209 15H18C17.437 15 16.6 14.182 16.6 13.631V12C16.6 9.464 14.537 7.4 12 7.4C9.463 7.4 7.4 9.463 7.4 12C7.4 14.537 9.463 16.6 12 16.6C13.234 16.6 14.35 16.106 15.177 15.313C15.826 16.269 16.93 17 18 17L18.002 16.981C18.064 16.994 18.129 17 18.195 17H18.4C20.552 17 22 15.306 22 12.782V12C22 6.486 17.514 2 12 2ZM12 14.599C10.566 14.599 9.4 13.433 9.4 11.999C9.4 10.565 10.566 9.399 12 9.399C13.434 9.399 14.6 10.565 14.6 11.999C14.6 13.433 13.434 14.599 12 14.599Z"></path></svg>'
         }),
         build.div({
             class: 'bd-username',
-            html: 'Dorumin'
+            text: 'Dorumin'
         }),
         build.div({
             class: 'bd-status bd-online'
         }),
         build.div({
             class: 'bd-akaWrapper',
-            html: [
+            children: [
                 build.div({
                     class: 'bd-divider',
                 }),
                 build.div({
                     class: 'bd-akaBadge',
-                    html: 'aka'
+                    text: 'aka'
                 }),
                 build.div({
                     class: 'bd-nicknames',
-                    html: 'Digital Programming Overlord'
+                    text: 'Digital Programming Overlord'
                 })
             ]
         })
@@ -253,10 +261,10 @@ const children = build.div({
 
 const toolbar = build.div({
     class: 'bd-toolbar',
-    html: toolbarIconsDM.map(icon => {
+    children: toolbarIconsDM.map(icon => {
         return build.div({
             class: 'bd-iconWrapper',
-            html: build.div({
+            child: build.div({
                 class: 'bd-icon',
                 html: icon.icon
             }),
@@ -267,7 +275,7 @@ const toolbar = build.div({
 
 const toolbarSearch = build.div({
     class: 'bd-search',
-    html: [
+    children: [
         build.input({
             class: 'bd-searchBar',
             placeholder: 'Search'
@@ -281,7 +289,7 @@ const toolbarSearch = build.div({
         click: function(e) {
             const me = e.currentTarget;
 
-            me.classList.contains('bd-focused') 
+            me.classList.contains('bd-focused')
                 ? me.classList.remove('bd-focused')
                 : me.classList.add('bd-focused');
         }
@@ -293,10 +301,10 @@ toolbar.insertBefore(toolbarSearch, toolbar.children[4])
 const placeholderDM = fakeDM.map(message => {
     return build.div({
         class: 'bd-message',
-        html: [
+        children: [
             build.div({
                 class: 'bd-header',
-                html: [
+                children: [
                     build.img({
                         class: 'bd-img',
                         src: `./img/avatars/${message.avatar}`,
@@ -305,17 +313,17 @@ const placeholderDM = fakeDM.map(message => {
                     }),
                     build.div({
                         class: 'bd-username',
-                        html: [
+                        children: [
                             build.span({
                                 html: message.name
                             })
                         ]
                     })
                 ]
-            }), 
+            }),
             build.div({
                 class: 'bd-messageContent',
-                html: build.div({
+                child: build.div({
                     html: message.message
                 })
             })
@@ -325,19 +333,19 @@ const placeholderDM = fakeDM.map(message => {
 
 const content = build.div({
     class: 'bd-chatContent',
-    html: [
+    children: [
         build.div({
             class: 'bd-messagesWrapper',
-            html: build.div({
+            child: build.div({
                 class: 'bd-scroller',
-                html: placeholderDM
+                children: placeholderDM
             })
         }),
         build.div({
             class: 'bd-channelTextArea',
-            html: build.div({
+            child: build.div({
                 class: 'bd-inner',
-                html: build.textarea({
+                child: build.textarea({
                     class: 'bd-textarea'
                 })
             })
@@ -351,21 +359,21 @@ const membersWrap = build.div({
 
 const base = build.div({
     class: 'bd-base',
-    html: [
+    children: [
         build.div({
             class: 'bd-sidebar',
-            html: [privateChannels, userBox]
+            children: [privateChannels, userBox]
         }),
         build.div({
             class: 'bd-chat',
-            html: [
+            children: [
                 build.div({
                     class: 'bd-title',
-                    html: [children, toolbar]
+                    children: [children, toolbar]
                 }),
                 build.div({
                     class: 'bd-content bd-dm',
-                    html: [content, membersWrap]
+                    children: [content, membersWrap]
                 })
             ]
         })
@@ -375,7 +383,7 @@ const base = build.div({
 const appMount = build.div({
     class: 'bd-appMount',
     id: 'app-mount',
-    html: [guildNav, base]
+    children: [guildNav, base]
 });
 
 document.body.appendChild(appMount);

@@ -1,17 +1,19 @@
 #app-mount {
-    width: 100%;
-    height: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     /* background: rgba(255, 255, 255, .2); */
+    display: flex;
+    position: absolute;
+    /* transform: scale(.9); */
+    overflow: hidden;
 }
 
 .bd-base {
     background: rgba(0, 0, 0, 0.1);
-    position: absolute;
-    top: 0;
-    left: 72px;
-    right: 0;
-    bottom: 0;
     display: flex;
+    width: 100%;
 }
 
 .bd-chat {
@@ -43,9 +45,13 @@
 }
 
 .bd-content .bd-chatContent .bd-messagesWrapper .bd-message {
-    margin-top: 1.0625rem;
-    padding: .125rem 48px .125rem 72px;
+    margin-top: 17px;
+    padding: 2px 48px 2px 72px;
     position: relative;
+}
+
+.bd-content .bd-chatContent .bd-messagesWrapper .bd-message:last-of-type {
+    margin-bottom: 16px;
 }
 
 .bd-content .bd-chatContent .bd-messagesWrapper .bd-message .bd-header .bd-img {
@@ -59,14 +65,10 @@
     cursor: pointer;
 }
 
-.bd-content .bd-chatContent .bd-messagesWrapper .bd-message .bd-header .bd-username {
-    font-size: 1rem;
-    line-height: 1.375rem;
-}
-
+.bd-content .bd-chatContent .bd-messagesWrapper .bd-message .bd-header .bd-username,
 .bd-content .bd-chatContent .bd-messagesWrapper .bd-message .bd-messageContent {
-    font-size: 1rem;
-    line-height: 1.375rem;
+    font-size: 16px;
+    line-height: 22px;
 }
 
 .bd-content .bd-chatContent .bd-channelTextArea {
@@ -102,8 +104,8 @@
     border-radius: 8px;
     -webkit-appearance: none;
     font-weight: 400;
-    font-size: 1rem;
-    line-height: 1.375rem;
+    font-size: 16px;
+    line-height: 22px;
     width: 100%;
     height: 44px;
     padding: 11px 10px;
@@ -212,10 +214,7 @@
     background: rgba(255, 255, 255, 0.1);
     display: flex;
     justify-content: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
+    flex-shrink: 0;
 }
 
 .bd-guilds .bd-listItem {
@@ -343,6 +342,7 @@ body {
     right: 0;
     bottom: 0;
     margin: 0;
+    position: absolute;
     background: #380831;
     color: white;
     font-family: 'Josefin Sans', sans-serif;
