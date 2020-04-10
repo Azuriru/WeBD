@@ -143,15 +143,49 @@ const buildDMUser = user => {
             })
         ]
     });
-}
+};
+
+const dmTabs = dmTabsList.map(tab => {
+    return build.div({
+        class: 'bd-channel',
+        events: {
+            click: function(e) {
+                const me = e.currentTarget;
+
+                if (me.classList.contains('bd-selected')) return;
+
+                const all = document.querySelectorAll('.bd-channel.bd-selected');
+
+                let i = all.length;
+                while (i--) {
+                    all[i].classList.remove('bd-selected');
+                }
+
+                me.classList.add('bd-selected');
+            }
+        },
+        children: [
+            buildAvatar(tab),
+            build.div({
+                class: 'bd-content',
+                children: [
+                    build.div({
+                        class: 'bd-username',
+                        html: tab.name
+                    })
+                ]
+            })
+        ]
+    });
+});
 
 const privateList = build.div({
     class: 'bd-scroller bd-thinner',
-    children: dmList.map(user => {
+    children: dmTabs.concat(dmList.map(user => {
         return user.header
             ? buildDMHeader(user)
             : buildDMUser(user)
-    })
+    }))
 });
 
 const privateChannels = build.div({
@@ -268,7 +302,16 @@ const toolbar = build.div({
                 class: 'bd-icon',
                 html: icon.icon
             }),
-            'data-name': icon.name
+            'data-name': icon.name,
+            events: {
+                click: function(e) {
+                    const me = e.currentTarget;
+    
+                    if (me.dataset['name'] === 'Get Help') {
+                        document.body.classList.toggle('color-picker-open');
+                    };
+                }
+            },
         });
     })
 });

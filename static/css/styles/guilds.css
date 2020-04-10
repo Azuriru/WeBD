@@ -1,10 +1,14 @@
 .bd-guilds {
     width: 72px;
     overflow: hidden;
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--bd-depth-guilds-list);
     display: flex;
     justify-content: center;
     flex-shrink: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
 }
 
 .bd-guilds .bd-listItem {

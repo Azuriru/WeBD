@@ -12,14 +12,16 @@
 }
 
 .bd-scroller::-webkit-scrollbar-thumb {
-	background-color: rgba(255, 255, 255, 0.5);
+	background-color: rgba(var(--bd-scrollbar-track-piece), 0.5);
 	border-radius: 10px;
 	border: 3px solid transparent;
 	background-clip: padding-box;
 }
 
-.bd-scroller::-webkit-scrollbar-track {
-	background: transparent;
+.bd-scroller::-webkit-scrollbar-track,
+.bd-scroller::-webkit-scrollbar-track-piece  {
+	background: var(--bd-scrollbar);
+    border-color: var(--bd-scrollbar);
 }
 
 .bd-scroller.bd-hidden::-webkit-scrollbar {

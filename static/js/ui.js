@@ -5,6 +5,7 @@
         'img',
         'input',
         'textarea',
+        'canvas',
         'form',
         'pre',
         'code',

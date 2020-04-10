@@ -9,3 +9,15 @@
     /* transform: scale(.9); */
     overflow: hidden;
 }
+
+#app-mount::before {
+    content: '';
+    background: var(--bd-background-color) var(--bd-background-image) var(--bd-background-position) / cover no-repeat;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+    filter: var(--bd-background-brightness) var(--bd-background-contrast) var(--bd-background-blur);
+    z-index: -1;
+}

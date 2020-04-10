@@ -4,7 +4,7 @@
 :root {
     /* Main background */
     --bd-background-image: url(https://media.discordapp.net/attachments/595506142126538753/602478618001801216/Hopal.png);
-    --bd-background-position: center top;
+    --bd-background-position: top left;
     --bd-background-color: linear-gradient(to right, rgba(45, 7, 40, .65), rgba(41, 7, 40, .65)),;
     --bd-background-brightness: brightness(.85);
     --bd-background-contrast: contrast(1);

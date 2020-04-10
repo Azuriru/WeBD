@@ -10,10 +10,26 @@
     overflow: hidden;
 }
 
+#app-mount::before {
+    content: '';
+    background: var(--bd-background-color) var(--bd-background-image) var(--bd-background-position) / cover no-repeat;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+    filter: var(--bd-background-brightness) var(--bd-background-contrast) var(--bd-background-blur);
+    z-index: -1;
+}
+
 .bd-base {
     background: rgba(0, 0, 0, 0.1);
     display: flex;
-    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 72px;
+    right: 0;
+    bottom: 0;
 }
 
 .bd-chat {
@@ -127,6 +143,29 @@
     transition: .5s;
 }
 
+#app-mount {
+    transition: left 250ms ease;
+}
+
+.color-picker-open #app-mount {
+    left: 250px;
+}
+
+#bd-colorpicker {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 250px;
+    background-image: linear-gradient(45deg, green, #0ff);
+    transform: translateX(-100%);
+    transition: transform 250ms ease;
+}
+
+.color-picker-open #bd-colorpicker {
+    transform: translateX(0);
+}
+
 .bd-base .bd-chat .bd-content {
     width: 100%;
     height: 100%;
@@ -150,11 +189,11 @@
 /* yeah but guilds.css isn't gonna be adding this class to the elems lmao */
 .bd-base .bd-sidebar .bd-privateChannels .bd-channel.bd-selected,
 .bd-base .bd-sidebar .bd-privateChannels .bd-channel.bd-selected:hover {
-    background: rgba(255, 255, 255, .15);
+    background: rgba(var(--bd-default), .4);
 }
 
 .bd-base .bd-sidebar .bd-privateChannels .bd-channel:hover {
-    background: rgba(255, 255, 255, .1);
+    background: rgba(var(--bd-default), .2);
 }
 
 .bd-base .bd-sidebar .bd-privateChannels .bd-channel .bd-avatar {
@@ -211,10 +250,14 @@
 .bd-guilds {
     width: 72px;
     overflow: hidden;
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--bd-depth-guilds-list);
     display: flex;
     justify-content: center;
     flex-shrink: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
 }
 
 .bd-guilds .bd-listItem {
@@ -324,11 +367,13 @@
     margin-left: -4px;
 }
 
-@import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
-
-@font-face {
-    font-family: whitney;
-    src: url('whitney.otf');
+.bd-logo {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, .1);
 }
 
 * {
@@ -345,7 +390,7 @@ body {
     position: absolute;
     background: #380831;
     color: white;
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: Whitney, 'Josefin Sans', sans-serif;
 }
 
 body::before {
@@ -355,12 +400,12 @@ body::before {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top left;
-    position: fixed;
+    position: absolute;
     bottom: 0;
     right: 0;
     left: 0;
     top: 0;
-    filter: brightness(.5) contrast(1.1) blur();
+    filter: brightness(1) contrast(1.1) blur(10px);
     z-index: -1;
 }
 
@@ -378,7 +423,7 @@ body::before {
 
 .bd-sidebar .bd-panel {
     height: 52px;
-    background: rgba(255, 255, 255, .1);
+    background: var(--bd-depth-userbox);
     display: flex;
     align-items: center;
     padding: 0 8px;
@@ -526,14 +571,16 @@ body::-webkit-scrollbar {
 }
 
 .bd-scroller::-webkit-scrollbar-thumb {
-	background-color: rgba(255, 255, 255, 0.5);
+	background-color: rgba(var(--bd-scrollbar-track-piece), 0.5);
 	border-radius: 10px;
 	border: 3px solid transparent;
 	background-clip: padding-box;
 }
 
-.bd-scroller::-webkit-scrollbar-track {
-	background: transparent;
+.bd-scroller::-webkit-scrollbar-track,
+.bd-scroller::-webkit-scrollbar-track-piece  {
+	background: var(--bd-scrollbar);
+    border-color: var(--bd-scrollbar);
 }
 
 .bd-scroller.bd-hidden::-webkit-scrollbar {
@@ -546,7 +593,7 @@ body::-webkit-scrollbar {
     flex-shrink: 0;
     width: 240px;
     height: 100%;
-    /* background: rgba(255, 255, 255, .1); */
+    background: var(--bd-depth-sidebar);
 }
 
 .bd-sidebar .bd-privateChannels {
@@ -558,7 +605,7 @@ body::-webkit-scrollbar {
 
 .bd-sidebar .bd-privateChannels .bd-searchBar {
     height: 48px;
-    background: rgba(255, 255, 255, .1);
+    /* background: rgba(255, 255, 255, .1); */
     display: flex;
     align-items: center;
     padding: 0 10px;
@@ -581,15 +628,14 @@ body::-webkit-scrollbar {
 }
 
 .bd-sidebar .bd-privateChannels .bd-scroller {
-    background: rgba(255, 255, 255, .05);
+    /* background: rgba(255, 255, 255, .05); */
     height: 100%;
 }
-
 
 .bd-chat .bd-title {
     width: 100%;
     height: 48px;
-    background: rgba(255, 255, 255, .1);
+    background: var(--bd-depth-title);
     display: flex;
     align-items: center;
 }

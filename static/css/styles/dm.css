@@ -14,11 +14,11 @@
 /* yeah but guilds.css isn't gonna be adding this class to the elems lmao */
 .bd-base .bd-sidebar .bd-privateChannels .bd-channel.bd-selected,
 .bd-base .bd-sidebar .bd-privateChannels .bd-channel.bd-selected:hover {
-    background: rgba(255, 255, 255, .15);
+    background: rgba(var(--bd-default), .4);
 }
 
 .bd-base .bd-sidebar .bd-privateChannels .bd-channel:hover {
-    background: rgba(255, 255, 255, .1);
+    background: rgba(var(--bd-default), .2);
 }
 
 .bd-base .bd-sidebar .bd-privateChannels .bd-channel .bd-avatar {

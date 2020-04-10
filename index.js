@@ -8,7 +8,7 @@ app
     // .use(compression())
     .use(express.static('static'));
 
-app.get('/:index', (req, res, next) => {
+app.get('/:team', (req, res, next) => {
     const file = path.join(__dirname, 'static', req.params.team + '.html');
     
     fs.exists(file, exists => {

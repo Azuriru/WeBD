@@ -1,8 +1,7 @@
-
 .bd-chat .bd-title {
     width: 100%;
     height: 48px;
-    background: rgba(255, 255, 255, .1);
+    background: var(--bd-depth-title);
     display: flex;
     align-items: center;
 }

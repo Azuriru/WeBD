@@ -1,6 +1,6 @@
 .bd-sidebar .bd-panel {
     height: 52px;
-    background: rgba(255, 255, 255, .1);
+    background: var(--bd-depth-userbox);
     display: flex;
     align-items: center;
     padding: 0 8px;
