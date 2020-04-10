@@ -24,7 +24,13 @@
 				child: build.canvas({
 					id: 'bd-color-canvas',
 					width: 250,
-					height: 150
+					height: 150,
+					events: {
+						click: function(e) {
+							const ctx = e.targt.getContext('2d');
+							
+						}
+					}
 				})
 			}),
 			build.div({
@@ -32,7 +38,7 @@
 				children: []
 			})
 		]
-	});
+	}); // lmao code faster gdi
 	
 	window.getPixel = function(width, height, x, y) {
 		const pw = x / width;
