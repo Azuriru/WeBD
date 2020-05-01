@@ -89,7 +89,11 @@ const dmList = [
     {
         name: 'Lovyn',
         icon: 'RyuZU.jpeg',
-        online: 'away'
+        online: 'away',
+        status: {
+            type: 'Custom',
+            text: 'This is significantly slightly less terrible'
+        }
     },
     {
         header: 'Yesterday',

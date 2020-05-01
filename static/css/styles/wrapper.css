@@ -1,0 +1,34 @@
+body > .bd-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.bd-wrapper .bd-appMountWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.bd-wrapper .bd-appMountWrapper #app-mount {
+    display: initial;
+    position: relative;
+    flex-shrink: 0;
+    width: 1200px;
+    height: 800px;
+    transform: scale(.7);
+    top: initial;
+    bottom: initial;
+    left: initial;
+    right: initial;
+}
+
+.bd-wrapper .bd-picker {
+    height: 100px;
+    width: 100%;
+    background: white;
+    flex-shrink: 0;
+}
