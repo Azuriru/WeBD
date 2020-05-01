@@ -11,7 +11,7 @@ body > .bd-wrapper {
 }
 
 .bd-wrapper .bd-appMountWrapper #app-mount {
-    display: initial;
+    display: block;
     position: relative;
     flex-shrink: 0;
     width: 1280px;
