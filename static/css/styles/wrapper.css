@@ -8,6 +8,7 @@ body > .bd-wrapper {
 .bd-wrapper .bd-appMountWrapper {
     width: calc(1280px * .7);
     height: calc(720px * .7);
+    margin: 50px;
 }
 
 .bd-wrapper .bd-appMountWrapper #app-mount {

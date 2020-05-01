@@ -114,7 +114,7 @@ const buildDMUser = user => {
 
                 const header = document.querySelector('.bd-chat .bd-title .bd-children');
                 header.querySelector('.bd-username').innerHTML = me.querySelector('.bd-username').textContent;
-                // header.querySelector('.bd-status')
+                // header.querySelector('.bd-status');
             }
         },
         children: [
@@ -131,10 +131,10 @@ const buildDMUser = user => {
                         child: user.status && build.span({
                             class: 'bd-status-text',
                             children: [
-                                build.text(`${user.status.type} `),
+                                build.text(user.status.type.indexOf('Custom') > -1 ? '' : `${user.status.type} `),
                                 build.span({
                                     class: 'bd-status-name',
-                                    html: user.status.name
+                                    html: user.status.name ? user.status.name : user.status.text
                                 })
                             ]
                         })

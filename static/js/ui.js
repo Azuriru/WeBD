@@ -2,6 +2,7 @@
     const knownTags = [
         'div',
         'span',
+        'a',
         'img',
         'input',
         'textarea',

@@ -9,7 +9,7 @@ const appMountWrapper = build.div({
 
 const wrapper = build.div({
     class: 'bd-wrapper',
-    children: [appMountWrapper, picker]
+    children: [bdHeader, appMountWrapper, picker]
 });
 
 document.body.appendChild(wrapper);
