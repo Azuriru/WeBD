@@ -174,16 +174,18 @@ a {
     flex-shrink: 0;
     padding: 20px;
     margin-bottom: 50px;
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    grid-gap: 25px 200px;
-    grid-template-columns: 300px 300px;
 }
 
 .bd-wrapper .bd-picker .bd-pickerSet {
     display: flex;
+    align-items: center;
     justify-content: space-between;
     padding: 5px 10px;
+    width: 300px;
+    margin: 5px 100px;
 }
 
 .bd-wrapper .bd-picker .bd-pickerSet .bd-pickerValue {

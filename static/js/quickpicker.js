@@ -24,9 +24,7 @@ const picker = build.div({
                 }),
                 build.div({
                     class: 'bd-pickerValue',
-                    child: v.type > 1
-                    ? buildColorValue(v)
-                    : buildInput(v)
+                    child: buildColorValue(v)
                 })
             ]
         })
