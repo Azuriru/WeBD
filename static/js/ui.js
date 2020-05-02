@@ -12,17 +12,45 @@
         'code',
         'style',
         'script',
+
         'nav',
         'article',
         'header',
-        'footer'
+        'footer',
+
+        'svg',
+        'path',
+        'g',
+        'linearGradient',
+        'ellipse',
+        'stop'
+    ];
+
+    const svgTags = [
+        'svg',
+        'circle',
+        'path',
+        'use',
+        'path',
+        'g',
+        'linearGradient',
+        'stop',
     ];
 
     function build(attr) {
         if (!attr.tag) throw new Error('No tag found');
         if (attr.hasOwnProperty('if') && !attr.if) return document.createDocumentFragment();
 
-        const el = document.createElement(attr.tag);
+        let el;
+        
+        if (svgTags.includes(attr.tag)) {
+            el = document.createElementNS(
+                'http://www.w3.org/2000/svg',
+                attr.tag
+            );
+        } else {
+            el = document.createElement(attr.tag);
+        }
 
         for (let property in attr) {
             const val = attr[property];

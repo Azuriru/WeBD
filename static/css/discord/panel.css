@@ -20,7 +20,6 @@
     justify-content: center;
     transition: .3s;
     cursor: pointer;
-    /* background: rgba(255, 255, 255, .1); */
 }
 
 .bd-sidebar .bd-panel .bd-button:hover {

@@ -1,0 +1,18 @@
+.bd-intro {
+    padding: 20px;
+    margin: 30px 20px 0;
+    text-align: center;
+    max-width: 800px;
+}
+
+.bd-intro .bd-introHeader {
+    font-size: 36px;
+    font-weight: 600;
+}
+
+.bd-intro .bd-introText {
+    font-size: 16px;
+    margin-top: 10px;
+    white-space: pre-line;
+    color: #e4e4e4;
+}

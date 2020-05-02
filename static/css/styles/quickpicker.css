@@ -1,0 +1,25 @@
+.bd-wrapper .bd-picker {
+    flex-shrink: 0;
+    padding: 20px;
+    margin-bottom: 50px;
+    display: grid;
+    justify-content: center;
+    grid-gap: 25px 200px;
+    grid-template-columns: 300px 300px;
+}
+
+.bd-wrapper .bd-picker .bd-pickerSet {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px;
+}
+
+.bd-wrapper .bd-picker .bd-pickerSet .bd-pickerValue {
+    padding: 3px;
+    background: rgba(255, 255, 255, .1);
+}
+
+.bd-wrapper .bd-picker .bd-pickerSet .bd-pickerValue .bd-colorPreview {
+    width: 50px;
+    height: 20px;
+}

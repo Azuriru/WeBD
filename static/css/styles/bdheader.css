@@ -1,0 +1,96 @@
+.bd-wrapper > .bd-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 25px;
+}
+
+.bd-wrapper > .bd-header .bd-headerLeft,
+.bd-wrapper > .bd-header .bd-headerRight {
+    font-size: 14px;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.bd-wrapper > .bd-header .bd-headerLeft .bd-logo {
+    margin-right: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bd-wrapper > .bd-header .bd-headerLeft .bd-logo .bd-logoInner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bd-wrapper > .bd-header .bd-headerLeft .bd-logo .bd-logoInner .bd-logoIcon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bd-wrapper > .bd-header .bd-headerLeft .bd-logo .bd-logoInner .bd-text {
+    background: linear-gradient(to right bottom, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-stroke: 3px transparent;
+    font-size: 20px;
+    font-family: Uni Sans;
+    letter-spacing: 3px;
+    transform: translateY(2px);
+    margin-left: 2px;
+}
+
+.bd-wrapper > .bd-header [class^='bd-header'] nav > * {
+    padding: 12px 14px;
+}
+
+.bd-wrapper > .bd-header [class^='bd-header'] nav > a span {
+    position: relative;
+    text-decoration: none;
+}
+
+.bd-wrapper > .bd-header [class^='bd-header'] nav > a span:before,
+.bd-wrapper > .bd-header [class^='bd-header'] nav > a span:after {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    width: 0;
+    height: 2px;
+    transition: all 0.3s ease-in-out;
+    opacity: 0;
+    background-color: rgba(255, 255, 255, .8);
+}
+
+.bd-wrapper > .bd-header [class^='bd-header'] nav > a span:before {
+    right: 50%;
+}
+
+.bd-wrapper > .bd-header [class^='bd-header'] nav > a span:after {
+    left: 50%;
+}
+
+.bd-wrapper > .bd-header [class^='bd-header'] nav > a:hover span:after,
+.bd-wrapper > .bd-header [class^='bd-header'] nav > a:hover span:before {
+    width: 50%;
+    opacity: 1;
+}
+
+.bd-wrapper > .bd-header .bd-headerRight .bd-download {
+    color: rgba(255, 255, 255, .8);
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    padding: 5px 15px;
+    border-radius: 20px;
+    transition: .3s;
+}
+
+.bd-wrapper > .bd-header .bd-headerRight .bd-download:hover {
+    color: white;
+    border-color: white;
+}

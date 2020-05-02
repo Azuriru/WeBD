@@ -133,7 +133,7 @@ const buildDMUser = user => {
                             children: [
                                 build.text(user.status.type.indexOf('Custom') > -1 ? '' : `${user.status.type} `),
                                 build.span({
-                                    class: 'bd-status-name',
+                                    class: user.status.name ? 'bd-status-name' : 'bd-status-custom',
                                     html: user.status.name ? user.status.name : user.status.text
                                 })
                             ]
@@ -429,4 +429,4 @@ const appMount = build.div({
     children: [guildNav, base]
 });
 
-document.body.appendChild(appMount);
+// document.body.appendChild(appMount);

@@ -9,6 +9,7 @@ const using = src => new Promise(res => {
     await using('./js/ui.js');
     await using('./js/data.js');
     await using('./js/discord.js');
-    await using('./js/bd.js');
-    await using('./js/wrapper.js');
+    await using('./js/colorpicker.js');
+    
+    document.body.appendChild(appMount);
 }) ();

@@ -16,7 +16,6 @@
 
 .bd-sidebar .bd-privateChannels .bd-searchBar {
     height: 48px;
-    /* background: rgba(255, 255, 255, .1); */
     display: flex;
     align-items: center;
     padding: 0 10px;
@@ -39,6 +38,5 @@
 }
 
 .bd-sidebar .bd-privateChannels .bd-scroller {
-    /* background: rgba(255, 255, 255, .05); */
     height: 100%;
 }
