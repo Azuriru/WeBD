@@ -175,8 +175,44 @@ a {
     padding: 20px;
     margin-bottom: 50px;
     display: flex;
+    flex-direction: column;
+    width: 800px;
+}
+
+.bd-wrapper .bd-picker .bd-pickerTitle { 
+    padding: 5px 10px;
+    font-variant: all-small-caps;
+    font-size: 25px;
+}
+
+.bd-wrapper .bd-picker .bd-pickerSetWrapper {
+    display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
+}
+
+.bd-wrapper .bd-picker .bd-pickerText .bd-pickerSet {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.bd-wrapper .bd-picker .bd-pickerText .bd-pickerSet .bd-pickerName {
+    padding: 0 0 3px 1px;
+    display: flex;
+    align-items: center;
+}
+
+.bd-wrapper .bd-picker .bd-pickerText .bd-pickerSet .bd-pickerName .material-icons {
+    font-size: 12px;
+    margin-left: 3px;
+    cursor: pointer;
+}
+
+.bd-wrapper .bd-picker .bd-pickerText .bd-pickerSet .bd-pickerValue {
+    width: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .bd-wrapper .bd-picker .bd-pickerSet {
@@ -185,7 +221,12 @@ a {
     justify-content: space-between;
     padding: 5px 10px;
     width: 300px;
-    margin: 5px 100px;
+    margin: 5px 0
+}
+
+.bd-wrapper .bd-picker .bd-pickerSet .bd-pickerName {
+    text-transform: uppercase;
+    width: fit-content;
 }
 
 .bd-wrapper .bd-picker .bd-pickerSet .bd-pickerValue {
@@ -198,9 +239,26 @@ a {
     height: 20px;
 }
 
+.bd-wrapper .bd-picker .bd-pickerSet .bd-pickerValue .bd-input {
+    background: transparent;
+    color: white;
+    border: none;
+    width: 100%;
+    height: 20px;
+    display: flex;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 0 2px;
+}
+
 /* Scrollbars */
 body::-webkit-scrollbar {
     display: none;
+}
+
+:root {
+    --appMountScale: .7; /* Default */
 }
 
 body > .bd-wrapper {
@@ -211,8 +269,8 @@ body > .bd-wrapper {
 }
 
 .bd-wrapper .bd-appMountWrapper {
-    width: calc(1280px * .7);
-    height: calc(720px * .7);
+    width: calc(1280px * var(--appMountScale));
+    height: calc(720px * var(--appMountScale));
     margin: 50px;
 }
 
@@ -222,7 +280,7 @@ body > .bd-wrapper {
     flex-shrink: 0;
     width: 1280px;
     height: 720px;
-    transform: scale(.7);
+    transform: scale(var(--appMountScale));
     transform-origin: left top;
     top: initial;
     bottom: initial;

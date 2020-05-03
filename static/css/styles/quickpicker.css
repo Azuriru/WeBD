@@ -3,8 +3,44 @@
     padding: 20px;
     margin-bottom: 50px;
     display: flex;
+    flex-direction: column;
+    width: 800px;
+}
+
+.bd-wrapper .bd-picker .bd-pickerTitle { 
+    padding: 5px 10px;
+    font-variant: all-small-caps;
+    font-size: 25px;
+}
+
+.bd-wrapper .bd-picker .bd-pickerSetWrapper {
+    display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
+}
+
+.bd-wrapper .bd-picker .bd-pickerText .bd-pickerSet {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.bd-wrapper .bd-picker .bd-pickerText .bd-pickerSet .bd-pickerName {
+    padding: 0 0 3px 1px;
+    display: flex;
+    align-items: center;
+}
+
+.bd-wrapper .bd-picker .bd-pickerText .bd-pickerSet .bd-pickerName .material-icons {
+    font-size: 12px;
+    margin-left: 3px;
+    cursor: pointer;
+}
+
+.bd-wrapper .bd-picker .bd-pickerText .bd-pickerSet .bd-pickerValue {
+    width: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .bd-wrapper .bd-picker .bd-pickerSet {
@@ -13,7 +49,12 @@
     justify-content: space-between;
     padding: 5px 10px;
     width: 300px;
-    margin: 5px 100px;
+    margin: 5px 0
+}
+
+.bd-wrapper .bd-picker .bd-pickerSet .bd-pickerName {
+    text-transform: uppercase;
+    width: fit-content;
 }
 
 .bd-wrapper .bd-picker .bd-pickerSet .bd-pickerValue {
@@ -24,4 +65,17 @@
 .bd-wrapper .bd-picker .bd-pickerSet .bd-pickerValue .bd-colorPreview {
     width: 50px;
     height: 20px;
+}
+
+.bd-wrapper .bd-picker .bd-pickerSet .bd-pickerValue .bd-input {
+    background: transparent;
+    color: white;
+    border: none;
+    width: 100%;
+    height: 20px;
+    display: flex;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 0 2px;
 }

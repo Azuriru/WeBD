@@ -1,3 +1,7 @@
+:root {
+    --appMountScale: .7; /* Default */
+}
+
 body > .bd-wrapper {
     display: flex;
     flex-direction: column;
@@ -6,8 +10,8 @@ body > .bd-wrapper {
 }
 
 .bd-wrapper .bd-appMountWrapper {
-    width: calc(1280px * .7);
-    height: calc(720px * .7);
+    width: calc(1280px * var(--appMountScale));
+    height: calc(720px * var(--appMountScale));
     margin: 50px;
 }
 
@@ -17,7 +21,7 @@ body > .bd-wrapper {
     flex-shrink: 0;
     width: 1280px;
     height: 720px;
-    transform: scale(.7);
+    transform: scale(var(--appMountScale));
     transform-origin: left top;
     top: initial;
     bottom: initial;
