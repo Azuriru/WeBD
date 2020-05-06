@@ -10,6 +10,7 @@ const using = src => new Promise(res => {
     await using('./js/data.js');
     await using('./js/discord.js');
     await using('./js/bdheader.js');
+    await using('./js/quickpicker-events.js');
     await using('./js/quickpicker-data.js');
     await using('./js/quickpicker.js');
     await using('./js/wrapper.js');

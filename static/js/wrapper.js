@@ -27,3 +27,7 @@ const wrapper = build.div({
 });
 
 document.body.appendChild(wrapper);
+
+console.log('Everything should be fully loaded at this point.');
+
+const Quickpicker = new quickpicker();

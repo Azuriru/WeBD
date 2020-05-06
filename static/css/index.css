@@ -172,23 +172,30 @@ a {
 
 .bd-wrapper .bd-picker {
     flex-shrink: 0;
-    padding: 20px;
+    padding: 50px;
     margin-bottom: 50px;
     display: flex;
     flex-direction: column;
-    width: 800px;
+    max-width: 800px;
 }
 
 .bd-wrapper .bd-picker .bd-pickerTitle { 
-    padding: 5px 10px;
+    margin: 5px 10px;
+    padding-bottom: 4px;
+    border-bottom: 2px solid rgba(255, 255, 255, .3);
     font-variant: all-small-caps;
-    font-size: 25px;
+    font-size: 30px;
+    font-weight: 500;
 }
 
 .bd-wrapper .bd-picker .bd-pickerSetWrapper {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+}
+
+.bd-wrapper .bd-picker .bd-pickerText {
+    margin-bottom: 50px;
 }
 
 .bd-wrapper .bd-picker .bd-pickerText .bd-pickerSet {
@@ -213,6 +220,25 @@ a {
     width: 100%;
     display: flex;
     align-items: center;
+}
+
+.bd-wrapper .bd-picker .bd-pickerText .bd-pickerSet .bd-pickerValue.bd-pickerInline {
+    background: transparent;
+}
+
+.bd-wrapper .bd-picker .bd-pickerText .bd-pickerSet .bd-pickerValue.bd-pickerInline .bd-input {
+    background: rgba(255, 255, 255, .1);
+    padding: 0;
+}
+
+.bd-wrapper .bd-picker .bd-pickerText .bd-pickerSet .bd-pickerValue.bd-pickerInline > div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.bd-wrapper .bd-picker .bd-pickerText .bd-pickerSet .bd-pickerValue .bd-editIcon {
+    font-size: 20px;
 }
 
 .bd-wrapper .bd-picker .bd-pickerSet {
@@ -250,6 +276,7 @@ a {
     white-space: nowrap;
     overflow: hidden;
     padding: 0 2px;
+    font-family: Consolas, Andale Mono WT, Andale Mono, Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Monaco, Courier New, Courier, monospace;
 }
 
 /* Scrollbars */

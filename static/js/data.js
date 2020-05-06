@@ -280,3 +280,41 @@ const fakeDM = [
         message: 'From carrying this conversation'
     },
 ];
+
+const contextMenuList = {
+    dm: {
+        user: [
+            {
+                text: ['Profile', 'Call', 'Add Note', 'Close DM']
+            },
+            {
+                text: ['Invite to Server', 'Remove Friend', 'Block']
+            },
+            {
+                text: ['Copy ID']
+            }
+        ],
+        message: [
+            {
+                text: ['Add Reaction', 'Pin Message', 'Quote', 'Mark Unread', 'Copy Message Link']
+            },
+            {
+                text: ['Copy ID']
+            }
+        ],
+        messageSelected: [
+            {
+                text: ['Copy']
+            },
+            {
+                text: ['Search with Google']
+            },
+            {
+                text: ['Add Reaction', 'Pin Message', 'Quote', 'Mark Unread', 'Copy Message Link']
+            },
+            {
+                text: ['Copy ID']
+            }
+        ]
+    }
+}

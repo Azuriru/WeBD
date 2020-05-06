@@ -354,13 +354,9 @@ const placeholderDM = fakeDM.map(message => {
                         width: 40,
                         height: 40
                     }),
-                    build.div({
+                    build.span({
                         class: 'bd-username',
-                        children: [
-                            build.span({
-                                html: message.name
-                            })
-                        ]
+                        text: message.name
                     })
                 ]
             }),
@@ -423,10 +419,78 @@ const base = build.div({
     ]
 });
 
+const buildContextItems = (scope, type) => {
+    const DM = contextMenuList['dm'];
+    // const server = contextMenuList['server'];
+    switch (scope) {
+        case 'dm':
+            return DM[type].map(group => {
+                return build.div({
+                    class: 'bd-itemGroup',
+                    children: group.text.map(text => {
+                        return build.div({
+                            class: 'bd-item',
+                            text: text
+                        })
+                    })
+                });
+            });
+        break;
+        // case 'server':
+        //     return server[type].map(group => {
+        //         return build.div({
+        //             class: 'bd-itemGroup',
+        //             children: group.text.map(text => {
+        //                 return build.div({
+        //                     class: 'bd-item',
+        //                     text: text
+        //                 })
+        //             })
+        //         });
+        //     });
+        // break;
+    }
+}
+
+const contextMenu = build.div({
+    class: 'bd-contextMenu'
+});
+
+const buildContextMenu = (scope, type) => {
+    contextMenu.innerHTML = '';
+    buildContextItems(scope, type).forEach(e => contextMenu.appendChild(e))
+}
+
 const appMount = build.div({
     class: 'bd-appMount',
     id: 'app-mount',
-    children: [guildNav, base]
+    children: [guildNav, base, contextMenu],
+    events: {
+        click: function(e) {
+            if (!e.target.closest('.bd-contextMenu')) {    
+                contextMenu.style.display = 'none';
+            }
+        },
+        contextmenu: function(e) {
+            e.preventDefault();
+            const lookups = {
+                '.bd-username': buildContextMenu.bind(this, 'dm', 'user'),
+                '.bd-messageContent': buildContextMenu.bind(this, 'dm', 'message'),
+                'default': buildContextMenu.bind(this, 'dm', 'messageSelected')
+            };
+              
+            for (const key in lookups) {
+                const target = e.target.closest(key);
+                if (target !== null || key === 'default') {
+                    lookups[key](target);
+                    break;
+                }
+            }              
+            contextMenu.style.left = `${e.pageX}px`;
+            contextMenu.style.top = `${e.pageY}px`;
+            contextMenu.style.display = 'block'
+        }
+    },
 });
 
 // document.body.appendChild(appMount);

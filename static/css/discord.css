@@ -143,6 +143,34 @@
     display: flex;
 }
 
+.bd-contextMenu {
+    background-color: rgba(var(--bd-context-menu), .85);
+    position: fixed;
+    display: none;
+    min-width: 188px;
+    max-width: 320px;
+    border-radius: 4px;
+    padding: 6px 8px;
+    cursor: default;
+}
+
+.bd-contextMenu .bd-item {
+    position: relative;
+    font-weight: 500;
+    margin: 2px 0;
+    padding: 0 8px;
+    border-radius: 2px;
+    font-size: 14px;
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+}
+
+.bd-contextMenu .bd-item:hover {
+    background-color: rgba(var(--bd-color-link), .05);
+    cursor: pointer;
+}
+
 .bd-base .bd-sidebar .bd-privateChannels .bd-channel {
     height: 42px;
     display: flex;
@@ -194,6 +222,11 @@
     line-height: 20px;
     text-overflow: ellipsis;
     overflow: hidden;
+}
+
+.bd-base .bd-sidebar .bd-privateChannels .bd-channel .bd-content .bd-username,
+.bd-content .bd-chatContent .bd-messagesWrapper .bd-message .bd-header .bd-username {
+    font-weight: 500;
 }
 
 .bd-base .bd-sidebar .bd-privateChannels .bd-channel .bd-content .bd-status {

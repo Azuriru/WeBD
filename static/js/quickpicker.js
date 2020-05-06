@@ -1,8 +1,11 @@
 const buildInput = v => {
-    return build.input({
+    return v.inlineValue 
+    ? v.inlineValue
+    : build.input({
         class: 'bd-input',
-        value: v.value
-    });
+        value: v.value,
+        'data-var': v.var
+    })
 }
 
 const buildColorValue = v => {
@@ -12,7 +15,29 @@ const buildColorValue = v => {
     })
 }
 
-// const pickerTextTitle = 
+const buildEditIcon = () => {
+    return build.span({
+        classes: ['material-icons', 'bd-editIcon'],
+        text: 'edit',
+    });
+}
+
+const pickerInput = v => {
+    return v.editable != false
+        ? build.div({
+            class: 'bd-pickerValue bd-pickerInline', 
+            children: [
+                buildInput(v),
+                buildEditIcon()
+            ],
+            'data-var': v.var,
+        })
+        : build.div({
+            class: 'bd-pickerValue', 
+            child: buildInput(v)
+        })
+}
+
 const pickerText = build.div({
     class: 'bd-pickerText',
     children: [
@@ -31,22 +56,13 @@ const pickerText = build.div({
                             children: [
                                 build.text(v.name),
                                 build.span({
-                                    class: 'material-icons',
+                                    classes: ['material-icons', 'bd-helpIcon'],
                                     text: 'help',
                                     title: v.tip
                                 })
                             ]
                         }),
-                        build.div({
-                            class: 'bd-pickerValue',
-                            children: [
-                                buildInput(v),
-                                build.span({
-                                    class: 'material-icons',
-                                    text: 'edit',
-                                })
-                            ]
-                        })
+                        pickerInput(v)
                     ]
                 })
             })
@@ -85,18 +101,4 @@ const pickerColors = build.div({
 const picker = build.div({
     class: 'bd-picker',
     children: [pickerText, pickerColors]
-});
-
-const resize = () => {
-    let width = window.innerWidth * .6,
-        scale = `.${width.toString().substring(0, 2)}`,
-        root = document.documentElement;
-
-    root.style.setProperty('--appMountScale', scale);
-}
-
-resize();
-
-window.addEventListener('resize', function() {
-    resize();
 });
