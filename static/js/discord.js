@@ -485,10 +485,30 @@ const appMount = build.div({
                     lookups[key](target);
                     break;
                 }
-            }              
-            contextMenu.style.left = `${e.pageX}px`;
-            contextMenu.style.top = `${e.pageY}px`;
-            contextMenu.style.display = 'block'
+            }
+            const padding = 16;
+            const minWidth = contextMenu.clientWidth + padding;
+            const minHeight = contextMenu.clientHeight + padding;
+
+            contextMenu.style.left = `${e.clientX > window.innerWidth - minWidth ? window.innerWidth - minWidth : e.clientX}px`;
+            contextMenu.style.top = `${e.clientY > window.innerHeight - minHeight ? window.innerHeight - minHeight : e.clientY}px`; 
+
+            // e.clientX > window.innerWidth - minWidth ? window.innerWidth - minWidth : e.clientX;
+            // Math.min(e.pageY, innerHeight - contextMenu.clientHeight - 16);
+            // e.clientY > (window.innerWidth - contextMenu.clientWidth + 16) ? 1 : 2;
+
+            // console.log(e)
+            // Math should be uh
+            // 120 page
+            // 115 position
+            // 20 context menu width
+            // if position = less than page - context menu width + padding > move it left
+            // else if position = less than page padding > move it left 
+            // wait a min, just context menu width + padding so
+            // if position = less than padding + context menu width make it left 
+            // else do nothing
+            // same for top
+            contextMenu.style.display = 'block';
         }
     },
 });

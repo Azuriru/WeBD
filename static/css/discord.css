@@ -327,7 +327,7 @@
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    font-weight: bold;
+    font-weight: 600;
     font-size: 14px;
     position: relative;
     transition: .2s

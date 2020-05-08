@@ -1,41 +1,8 @@
-const buildInput = v => {
-    return v.inlineValue 
-    ? v.inlineValue
-    : build.input({
-        class: 'bd-input',
-        value: v.value,
-        'data-var': v.var
-    })
-}
-
 const buildColorValue = v => {
     return build.div({
         class: 'bd-colorPreview',
         style: `background-color: rgba(${v.value})`
     })
-}
-
-const buildEditIcon = () => {
-    return build.span({
-        classes: ['material-icons', 'bd-editIcon'],
-        text: 'edit',
-    });
-}
-
-const pickerInput = v => {
-    return v.editable != false
-        ? build.div({
-            class: 'bd-pickerValue bd-pickerInline', 
-            children: [
-                buildInput(v),
-                buildEditIcon()
-            ],
-            'data-var': v.var,
-        })
-        : build.div({
-            class: 'bd-pickerValue', 
-            child: buildInput(v)
-        })
 }
 
 const pickerText = build.div({
@@ -62,7 +29,14 @@ const pickerText = build.div({
                                 })
                             ]
                         }),
-                        pickerInput(v)
+                        build.div({
+                            class: 'bd-pickerValue', 
+                            child: build.input({
+                                class: 'bd-input',
+                                value: v.value,
+                                'data-var': v.var
+                            })
+                        })
                     ]
                 })
             })
@@ -96,7 +70,7 @@ const pickerColors = build.div({
             })
         })
     ]
-})
+});
 
 const picker = build.div({
     class: 'bd-picker',

@@ -42,7 +42,7 @@
         if (attr.hasOwnProperty('if') && !attr.if) return document.createDocumentFragment();
 
         let el;
-        
+
         if (svgTags.includes(attr.tag)) {
             el = document.createElementNS(
                 'http://www.w3.org/2000/svg',
@@ -85,6 +85,13 @@
                     for (const key in val) {
                         el.addEventListener(key, val[key]);
                     }
+                    break;
+                case 'props':
+                    for (const key in val) {
+                        console.log(el, val);
+                        el[key] = val[key];
+                    }
+                    break;
                 case 'if':
                 case 'tag':
                     break;
