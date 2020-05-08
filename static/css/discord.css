@@ -16,7 +16,7 @@
     right: 0;
     left: 0;
     top: 0;
-    filter: var(--bd-background-brightness) var(--bd-background-contrast) var(--bd-background-blur);
+    filter: brightness(var(--bd-background-brightness)) contrast(var(--bd-background-contrast)) blur(var(--bd-background-blur));
     z-index: -1;
 }
 

@@ -1,7 +1,12 @@
 const clyde = build.svg({
     class: 'bd-clyde',
     viewBox: '0 0 33 36',
-    style: 'width: 33px; height: 36px; fill: url(#gradient); position: absolute;',
+    style: {
+        width: '33px',
+        height: '36px',
+        fill: 'url(#gradient)',
+        position: 'absolute'
+    },
     children: [
         build.path({
             d: 'M28.5,0H3.8A3.778,3.778,0,0,0,0,3.7V28a3.714,3.714,0,0,0,3.8,3.7h21l-1-3.3,2.4,2.1,2.2,2,4,3.4V3.7A3.937,3.937,0,0,0,28.5,0Z'
@@ -15,20 +20,29 @@ const clyde = build.svg({
             children: [
                 build.stop({
                     offset: '0%',
-                    style: 'stop-color: #D16BA5; stop-opacity: 1;'
+                    style: {
+                        stopColor: '#D16BA5',
+                        stopOpacity: 1
+                    }
                 }),
                 build.stop({
                     offset: '50%',
-                    style: 'stop-color: #86A8E7; stop-opacity: 1;'
+                    style: {
+                        stopColor: '#86A8E7',
+                        stopOpacity: 1
+                    }
                 }),
                 build.stop({
                     offset: '100%',
-                    style: 'stop-color: #41dfff; stop-opacity: 1;'
+                    style: {
+                        stopColor: '#41dfff',
+                        stopOpacity: 1
+                    }
                 })
             ]
         })
     ]
-}); 
+});
 
 const bdLogo = build.div({
     class: 'bd-logoInner',
@@ -111,7 +125,7 @@ const bdHeader = build.div({
     children: [bdHeaderLeft, bdHeaderRight]
 });
 
-// document.body.appendChild(b); 
+// document.body.appendChild(b);
 /* ```html
 '<svg class="bd-clyde" viewBox="0 0 33 36" style="width: 33px; height: 36px; fill: url(#gradient); position: absolute;">
 <linearGradient id="gradient" x1="0%" x2="100%" y1="0%" y2="100%">

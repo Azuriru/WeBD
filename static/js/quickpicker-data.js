@@ -17,7 +17,6 @@ const pickerTextValues = [
         var: '--bd-background-color',
         tip: 'Can be anything from rgba to hsla or hex'
     },
-    // Probably a better way to do this but whatever
     {
         name: 'Brightness',
         value: '.85',

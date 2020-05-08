@@ -86,6 +86,11 @@
                         el.addEventListener(key, val[key]);
                     }
                     break;
+                case 'style':
+                    for (const key in val) {
+                        el.style[key] = val[key];
+                    }
+                    break;
                 case 'props':
                     for (const key in val) {
                         console.log(el, val);

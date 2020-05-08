@@ -1,10 +1,3 @@
-const buildColorValue = v => {
-    return build.div({
-        class: 'bd-colorPreview',
-        style: `background-color: rgba(${v.value})`
-    })
-}
-
 const pickerText = build.div({
     class: 'bd-pickerText',
     children: [
@@ -30,7 +23,7 @@ const pickerText = build.div({
                             ]
                         }),
                         build.div({
-                            class: 'bd-pickerValue', 
+                            class: 'bd-pickerValue',
                             child: build.input({
                                 class: 'bd-input',
                                 value: v.value,
@@ -42,7 +35,7 @@ const pickerText = build.div({
             })
         })
     ]
-})
+});
 
 const pickerColors = build.div({
     class: 'bd-pickerColors',
@@ -63,7 +56,12 @@ const pickerColors = build.div({
                         }),
                         build.div({
                             class: 'bd-pickerValue',
-                            child: buildColorValue(v)
+                            child: build.div({
+                                class: 'bd-colorPreview',
+                                style: {
+                                    backgroundColor: `rgba(${v.value})`
+                                }
+                            })
                         })
                     ]
                 })

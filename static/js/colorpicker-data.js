@@ -32,7 +32,9 @@ const pickerValues = [
 const buildColorValue = v => {
     return build.div({
         class: 'bd-colorPreview',
-        style: `background-color: rgba(${v.value})`
+        style: {
+            backgroundColor: `rgba(${v.value})`
+        }
     })
 }
 
