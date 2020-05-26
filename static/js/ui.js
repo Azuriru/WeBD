@@ -5,6 +5,7 @@
         'a',
         'img',
         'input',
+        'button',
         'textarea',
         'canvas',
         'form',
@@ -12,6 +13,13 @@
         'code',
         'style',
         'script',
+
+        'br',
+        'hr',
+
+        'b',
+        'i',
+        's',
 
         'nav',
         'article',
@@ -74,9 +82,12 @@
                     }
                     break;
                 case 'children':
+                    const fag = document.createDocumentFragment();
                     for (const elem of val) {
-                        el.appendChild(elem);
+                        fag.appendChild(elem);
                     }
+
+                    el.appendChild(fag);
                     break;
                 case 'classes':
                     el.setAttribute('class', val.join(' '));
@@ -111,6 +122,7 @@
 
     function boundTag(tag) {
         return function(attr) {
+            attr = attr || {};
             attr.tag = tag;
 
             return build(attr);

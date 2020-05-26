@@ -1,13 +1,51 @@
 (function() {
+	function RGB_TO_HSL(r, g, b) {
+		r /= 255, g /= 255, b /= 255;
+
+		var max = Math.max(r, g, b), min = Math.min(r, g, b);
+		var h, s, l = (max + min) / 2;
+
+		if (max == min) {
+			h = s = 0; // achromatic
+		} else {
+			var d = max - min;
+			s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+
+			switch (max) {
+				case r:
+					h = (g - b) / d + (g < b ? 6 : 0);
+					break;
+				case g:
+					h = (b - r) / d + 2;
+					break;
+				case b:
+					h = (r - g) / d + 4;
+				break;
+			}
+
+			h /= 6;
+		}
+
+		return [ h, s, l ];
+	}
+
 	window.pickerState = {
 		hue: 180,
-		sat: 1,
-		lig: 1,
+		sat: 100,
+		lig: 50,
 		alp: 1,
 		mousedown: false,
 		x: 250,
 		y: 0,
+
+		r: 0,
+		g: 0,
+		b: 0
 	};
+
+	let nextColorUpdate = '';
+
+	let imageData;
 
 	const vars = [
         '--bd-default',
@@ -19,36 +57,123 @@
         '--bd-darker'
 	];
 
+	function updateCanvasPosition(e) {
+		pickerState.x = Math.min(250, e.clientX);
+		pickerState.y = Math.min(150, e.clientY);
+
+		const color = getPixel(250, 150, pickerState.x, pickerState.y);
+
+		pickerState.hue = color.hue;
+		pickerState.sat = color.sat;
+		pickerState.lig = color.lig;
+		// console.log(color);
+		// console.log(`%c${getStateColor()}`, getStateColor());
+
+		const pointer = document.getElementById('bd-canvas-pointer');
+
+		pointer.style.top = `${pickerState.y}px`;
+		pointer.style.left = `${pickerState.x}px`;
+
+		updateCurrentColor();
+	}
+
+	function getStateColor() {
+		const {hue, sat, lig, alp} = pickerState;
+
+		return `hsl(${hue}deg, ${sat}%, ${lig}%, ${alp})`;
+	}
+
+	function updateCurrentColor() {
+		const wasEmpty = nextColorUpdate === '';
+		nextColorUpdate = getStateColor();
+
+		if (!wasEmpty) return;
+
+		requestAnimationFrame(function() {
+			document.documentElement.style.setProperty('--bd-currentColor', nextColorUpdate);
+			nextColorUpdate = '';
+		});
+	}
+
 	document.body.addEventListener('mousedown', function(e) {
 		if (e.target.closest('#bd-picker-wrapper')) {
-			console.log('down');
 			pickerState.mousedown = true;
-			pickerState.x = e.clientX;
-			pickerState.y = e.clientY;
-
-			const pointer = document.getElementById('bd-canvas-pointer');
-
-			pointer.style.top = `${pickerState.y}px`;
-			pointer.style.left = `${pickerState.x}px`;
+			updateCanvasPosition(e);
 		}
 	});
 
 	document.body.addEventListener('mouseup', function(e) {
-		console.log('up');
 		pickerState.mousedown = false;
 	});
 
 	document.body.addEventListener('mousemove', function(e) {
 		if (pickerState.mousedown) {
-			pickerState.x = Math.min(250, e.clientX);
-			pickerState.y = Math.min(150, e.clientY);
-
-			const pointer = document.getElementById('bd-canvas-pointer');
-
-			pointer.style.top = `${pickerState.y}px`;
-			pointer.style.left = `${pickerState.x}px`;
+			updateCanvasPosition(e);
 		}
 	}, { passive: true });
+
+	const hueSlider = build.input({
+		type: 'range',
+		id: 'bd-hue-slider',
+		min: 0,
+		max: 360,
+		value: pickerState.hue,
+		events: {
+			input: function(e) {
+				pickerState.hue = Number(e.target.value);
+				drawCanvas(document.getElementById('bd-color-canvas'));
+
+				updateCurrentColor();
+			}
+		}
+	});
+
+	const opacitySlider = build.input({
+		type: 'range',
+		id: 'bd-opacity-slider',
+		min: '0',
+		max: '100',
+		value: '100',
+		events: {
+			input: function(e) {
+				document.querySelector('#bd-picker-color').style.opacity = e.target.value / 100;
+			}
+		}
+	});
+
+	const colorInput = () => {
+		return build.input({
+			class: 'bd-color-value'
+		});
+	}
+
+	const colorType = (text) => {
+		return build.span({
+			text: text
+		})
+	}
+
+	const colorCode = build.div({
+		id: 'bd-color-code',
+		children: [
+			build.div({
+				class: 'bd-color-wrapper',
+				children: [colorInput(), colorType('H')]
+			}),
+			build.div({
+				class: 'bd-color-wrapper',
+				children: [colorInput(), colorType('S')]
+			}),
+			build.div({
+				class: 'bd-color-wrapper',
+				children: [colorInput(), colorType('L')]
+			}),
+			build.div({
+				class: 'bd-color-wrapper',
+				children: [colorInput(), colorType('A')]
+			})
+		]
+	});
 
 	const container = build.div({
 		id: 'bd-colorpicker',
@@ -75,31 +200,27 @@
 							}),
 						]
 					}),
-					build.input({
-						type: 'range',
-						id: 'bd-hue-slider',
-						min: 0,
-						max: 360,
-						value: pickerState.hue,
-						events: {
-							input: function(e) {
-								pickerState.hue = Number(e.target.value);
-								drawCanvas(document.getElementById('bd-color-canvas'));
-							}
-						}
+					build.div({
+						id: 'bd-picker-values',
+						children: [
+							build.div({
+								id: 'bd-picker-current',
+								children: [
+									build.div({
+										id: 'bd-picker-color'
+									}),
+									build.div({
+										id: 'bd-picker-transparent'
+									})
+								]
+							}),
+							build.div({
+								id: 'bd-picker-input-wrapper',
+								children: [hueSlider, opacitySlider]
+							}),
+							colorCode
+						]
 					}),
-					build.input({
-						type: 'range',
-						id: 'bd-opacity-slider',
-						min: '0',
-						max: '100',
-						value: '100',
-						events: {
-							input: function(e) {
-								console.log(e.target.value);
-							}
-						}
-					})
 				]
 			}),
 			build.div({
@@ -110,16 +231,20 @@
 	});
 
 	window.getPixel = function(width, height, x, y) {
-		const pw = x / width;
-		const ph = y / height;
-		const pwn = Math.abs(pw - 1);
-		const phn = Math.abs(ph - 1);
+		const coordY = Math.min(y, height - 1);
+		const coordX = Math.min(x, width - 1);
+		const offset = coordX * 4 + coordY * width * 4;
+		const r = imageData.data[offset];
+		const g = imageData.data[offset+ 1];
+		const b = imageData.data[offset + 2];
 
-		const hue = pickerState.hue;
-		const sat = Math.floor(pw * 100);
-		const lig = Math.floor(pwn * 50 + phn * 50);
+		const [ hue, sat, lig ] = RGB_TO_HSL(r, g, b);
 
-		return {hue, sat, lig, pw, ph, pwn, phn};
+		return {
+			hue: hue * 360,
+			sat: sat * 100,
+			lig: lig * 100
+		};
 	}
 
 	function drawCanvas(canvas) {
@@ -143,6 +268,8 @@
 
 		ctx.fillStyle = bg;
 		ctx.fillRect(0, 0, width, height);
+
+		imageData = ctx.getImageData(0, 0, width, height);
 	}
 
 	window.getPixel = getPixel;
