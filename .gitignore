@@ -1,5 +1,5 @@
 node_modules/
-.vscode
+/.vscode
 .vsc
 */.DS_Store
 .DS_Store

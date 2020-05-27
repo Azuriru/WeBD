@@ -1,3 +1,6 @@
+import build from './ui';
+import pickerColors from './data/colorpicker';
+
 (function() {
 	function RGB_TO_HSL(r, g, b) {
 		r /= 255, g /= 255, b /= 255;

@@ -1,3 +1,6 @@
+import build from '../ui';
+import {me, guildList, dmTabsList, dmList, userboxSettings, toolbarIconsDM, fakeDM, contextMenuList} from '../data/discord'
+
 const guildScroller = build.div({
     class: 'bd-scroller bd-hidden',
     children: guildList.map(guild => {
@@ -306,7 +309,7 @@ const toolbar = build.div({
             events: {
                 click: function(e) {
                     const me = e.currentTarget;
-    
+
                     if (me.dataset['name'] === 'Get Help') {
                         document.body.classList.toggle('color-picker-open');
                     };
@@ -461,13 +464,13 @@ const buildContextMenu = (scope, type) => {
     buildContextItems(scope, type).forEach(e => contextMenu.appendChild(e))
 }
 
-const appMount = build.div({
+export default build.div({
     class: 'bd-appMount',
     id: 'app-mount',
     children: [guildNav, base, contextMenu],
     events: {
         click: function(e) {
-            if (!e.target.closest('.bd-contextMenu')) {    
+            if (!e.target.closest('.bd-contextMenu')) {
                 contextMenu.style.display = 'none';
             }
         },
@@ -478,7 +481,7 @@ const appMount = build.div({
                 '.bd-messageContent': buildContextMenu.bind(this, 'dm', 'message'),
                 'default': buildContextMenu.bind(this, 'dm', 'messageSelected')
             };
-              
+
             for (const key in lookups) {
                 const target = e.target.closest(key);
                 if (target !== null || key === 'default') {
@@ -491,7 +494,7 @@ const appMount = build.div({
             const minHeight = contextMenu.clientHeight + padding;
 
             contextMenu.style.left = `${e.clientX > window.innerWidth - minWidth ? window.innerWidth - minWidth : e.clientX}px`;
-            contextMenu.style.top = `${e.clientY > window.innerHeight - minHeight ? window.innerHeight - minHeight : e.clientY}px`; 
+            contextMenu.style.top = `${e.clientY > window.innerHeight - minHeight ? window.innerHeight - minHeight : e.clientY}px`;
 
             // e.clientX > window.innerWidth - minWidth ? window.innerWidth - minWidth : e.clientX;
             // Math.min(e.pageY, innerHeight - contextMenu.clientHeight - 16);
@@ -503,9 +506,9 @@ const appMount = build.div({
             // 115 position
             // 20 context menu width
             // if position = less than page - context menu width + padding > move it left
-            // else if position = less than page padding > move it left 
+            // else if position = less than page padding > move it left
             // wait a min, just context menu width + padding so
-            // if position = less than padding + context menu width make it left 
+            // if position = less than padding + context menu width make it left
             // else do nothing
             // same for top
             contextMenu.style.display = 'block';
