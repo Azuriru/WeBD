@@ -14,4 +14,4 @@ const using = src => new Promise(res => {
     await using('./js/quickpicker-data.js');
     await using('./js/quickpicker.js');
     await using('./js/wrapper.js');
-}) ();a
+}) ();
