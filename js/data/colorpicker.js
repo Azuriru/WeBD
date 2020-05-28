@@ -1,3 +1,5 @@
+import build from '../ui';
+
 const pickerValues = [
     {
         name: 'Default',
@@ -38,7 +40,7 @@ const buildColorValue = v => {
     })
 }
 
-const pickerColors = build.div({
+export default build.div({
     class: 'bd-pickerSetWrapper',
     children: pickerValues.map(v => {
         return build.div({

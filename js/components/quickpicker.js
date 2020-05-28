@@ -1,3 +1,6 @@
+import build from '../ui';
+import {pickerTextValues, pickerValues} from '../data/quickpicker';
+
 const pickerText = build.div({
     class: 'bd-pickerText',
     children: [
@@ -70,7 +73,7 @@ const pickerColors = build.div({
     ]
 });
 
-const picker = build.div({
+export default build.div({
     class: 'bd-picker',
     children: [pickerText, pickerColors]
 });

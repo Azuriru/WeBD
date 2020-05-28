@@ -1,4 +1,4 @@
-const pickerTextValues = [
+export const pickerTextValues = [
     {
         name: 'Image',
         value: 'https://media.discordapp.net/attachments/595506142126538753/602478618001801216/Hopal.png',
@@ -37,7 +37,7 @@ const pickerTextValues = [
     }
 ];
 
-const pickerValues = [
+export const pickerValues = [
     {
         name: 'Default',
         value: 'var(--bd-default)'
