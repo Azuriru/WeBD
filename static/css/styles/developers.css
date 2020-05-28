@@ -1,0 +1,50 @@
+.bd-developers {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.bd-developers .bd-dev {
+    display: flex;
+    align-items: center;
+    margin: 25px 50px;
+}
+
+.bd-developers .bd-dev .bd-avatarWrapper {
+    width: 150px;
+    height: 150px;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.bd-developers .bd-dev .bd-avatarWrapper .bd-avatar {
+    width: 100%;
+}
+
+.bd-developers .bd-dev .bd-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin-left: 20px;
+}
+
+.bd-developers .bd-dev .bd-info .bd-userHeader {
+    font-size: 30px;
+    border-bottom: 2px solid rgba(255, 255, 255, .2);
+    margin-bottom: 6px;
+}
+
+/* Even */
+.bd-developers .bd-dev:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.bd-developers .bd-dev:nth-child(even) .bd-info {
+    margin-right: 20px;
+    margin-left: 0;
+    text-align: right;
+}
